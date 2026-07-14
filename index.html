@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wendy Ao — Growth Marketer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-hero:    #FFFBF0;
+      --bg-white:   #fff;
+      --yellow:     #FFE566;
+      --mint:       #5DCAA5;
+      --coral:      #F0997B;
+      --orange:     #D85A30;
+      --dark:       #1a1a1a;
+      --border:     #e8e8e8;
+      --text-muted: #999;
+
+      --pill-yellow-bg:   #FFF3B0;
+      --pill-yellow-text: #7A6200;
+      --pill-teal-bg:     #E1F5EE;
+      --pill-teal-text:   #0F6E56;
+      --pill-coral-bg:    #FAECE7;
+      --pill-coral-text:  #712B13;
+      --pill-gray-bg:     #F1EFE8;
+      --pill-gray-text:   #444441;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--dark);
+      background: var(--bg-white);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #E7F8F2;
+      color: #0F6E56;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+
+    section { padding: 72px 0; }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================================================
+       BILINGUAL TOGGLE LOGIC
+       Handled entirely via JS inline styles (highest specificity).
+       The .zh rule here is just a no-JS fallback.
+    ============================================================ */
+    .zh { display: none; }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    #navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      flex-shrink: 0;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: #555;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--dark); }
+
+    .lang-toggle {
+      display: flex;
+      background: #f0f0f0;
+      border-radius: 999px;
+      padding: 3px;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .lang-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: #555;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-btn.active {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      background: var(--bg-hero);
+      padding: 80px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .blob-yellow {
+      width: 340px; height: 280px;
+      background: var(--yellow);
+      top: -80px; right: -60px;
+    }
+    .blob-mint {
+      width: 240px; height: 200px;
+      background: var(--mint);
+      bottom: -40px; left: -60px;
+      opacity: 0.4;
+    }
+    .blob-coral {
+      width: 180px; height: 160px;
+      background: var(--coral);
+      bottom: 20px; right: 200px;
+      opacity: 0.35;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 48px;
+      align-items: center;
+    }
+
+    /* avatar */
+    .avatar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .avatar-ring {
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--yellow), var(--coral));
+      flex-shrink: 0;
+    }
+
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+      overflow: hidden;
+    }
+
+    .avatar-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 60% 28%;
+      border-radius: 50%;
+      display: block;
+      transform: scale(1.8);
+      transform-origin: 60% 28%;
+    }
+
+    .avatar-caption {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* hero left content */
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--yellow);
+      color: #7A6200;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    .hero-h1 {
+      font-size: 48px;
+      font-weight: 500;
+      line-height: 1.15;
+      margin-bottom: 28px;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-h1 .accent { color: var(--orange); }
+
+    .stats-row {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--orange);
+      line-height: 1.2;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 28px;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--dark);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn-dark:hover { opacity: 0.82; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--dark);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 1.5px solid var(--dark);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-outline:hover { background: var(--dark); color: #fff; }
+
+    /* ============================================================
+       ABOUT ME
+    ============================================================ */
+    #about { background: var(--bg-white); }
+
+    .about-body {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 24px;
+      max-width: 680px;
+    }
+
+    .open-to-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .open-to-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--mint);
+      white-space: nowrap;
+      padding-top: 4px;
+    }
+
+    .chips-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip-role {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: var(--bg-hero);
+      border: 1.5px solid #FFD966;
+      color: #7A6200;
+    }
+
+    .chip-fun {
+      font-size: 12px;
+      font-weight: 400;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: #F5F5F5;
+      color: #444;
+    }
+
+    /* ============================================================
+       SKILLS
+    ============================================================ */
+    #skills { background: #FAFAFA; }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 16px;
+      border-radius: 999px;
+    }
+
+    .pill-yellow { background: var(--pill-yellow-bg); color: var(--pill-yellow-text); }
+    .pill-teal   { background: var(--pill-teal-bg);   color: var(--pill-teal-text); }
+    .pill-coral  { background: var(--pill-coral-bg);  color: var(--pill-coral-text); }
+    .pill-gray   { background: var(--pill-gray-bg);   color: var(--pill-gray-text); }
+
+    /* ============================================================
+       EXPERIENCE & EDUCATION CARDS
+    ============================================================ */
+    #experience { background: var(--bg-white); }
+    #education  { background: #FAFAFA; }
+
+    .cards-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .exp-card {
+      background: var(--bg-white);
+      border: 0.5px solid #e8e8e8;
+      border-radius: 14px;
+      padding: 20px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .exp-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      border-color: #d0d0d0;
+    }
+
+    .card-header {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .logo-sq {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 1.5px solid var(--yellow);
+      background: var(--bg-hero);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+
+    .logo-sq.blue-logo {
+      border-color: #B5D4F4;
+      background: #EEF4FF;
+    }
+
+    .card-meta { flex: 1; min-width: 0; }
+
+    .card-company {
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .card-company a {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--mint);
+    }
+    .card-company a:hover { text-decoration: underline; }
+
+    .card-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .card-date {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .card-role {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+
+    .card-body {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 14px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .badge {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .badge-yellow { background: var(--pill-yellow-bg); color: var(--pill-yellow-text); }
+    .badge-teal   { background: var(--pill-teal-bg);   color: var(--pill-teal-text); }
+    .badge-coral  { background: var(--pill-coral-bg);  color: var(--pill-coral-text); }
+    .badge-blue   { background: #EEF4FF;               color: #1a4fa8; }
+
+    .edu-degree {
+      font-size: 13px;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    /* ============================================================
+       PORTFOLIO
+    ============================================================ */
+    #portfolio { background: var(--bg-white); }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+
+    .filter-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: #555;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .filter-btn:hover { border-color: #bbb; color: var(--dark); }
+    .filter-btn.active {
+      background: var(--dark);
+      color: #fff;
+      border-color: var(--dark);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .port-card {
+      background: var(--bg-white);
+      border: 0.5px solid #e8e8e8;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .port-card:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+      border-color: #ccc;
+      transform: translateY(-2px);
+    }
+    .port-card.hidden { display: none; }
+
+    .port-thumb {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+
+    .port-info { padding: 14px 16px 16px; }
+
+    .port-tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .port-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .port-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       CONTACT FOOTER
+    ============================================================ */
+    #contact {
+      background: var(--dark);
+      padding: 56px 0;
+    }
+
+    .contact-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .contact-title {
+      font-size: 28px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .contact-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      max-width: 420px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+
+    .btn-yellow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--yellow);
+      color: #7A6200;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .btn-yellow:hover { opacity: 0.85; }
+
+    .btn-ghost-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .btn-ghost-white:hover {
+      border-color: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 768px) {
+      .nav-links { display: none !important; }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .avatar-wrap { margin: 0 auto; }
+
+      .hero-h1 { font-size: 32px; }
+
+      .stats-row { justify-content: center; }
+
+      .hero-subtitle { max-width: 100%; }
+
+      .hero-buttons { justify-content: center; }
+
+      .about-body { max-width: 100%; }
+
+      .open-to-row { flex-direction: column; gap: 8px; }
+
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .contact-inner { flex-direction: column; text-align: center; }
+      .contact-buttons { justify-content: center; }
+
+      .card-header { flex-wrap: wrap; }
+      .card-date { width: 100%; order: 3; }
+    }
+
+    @media (max-width: 480px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+
+      .hero-h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+============================================================ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <span class="nav-logo">Wendy Ao ✦</span>
+
+    <ul class="nav-links">
+      <li><a href="#about"      class="en">About</a>      <a href="#about"      class="zh">关于</a></li>
+      <li><a href="#experience" class="en">Experience</a> <a href="#experience" class="zh">经历</a></li>
+      <li><a href="#education"  class="en">Education</a>  <a href="#education"  class="zh">教育</a></li>
+      <li><a href="#portfolio"  class="en">Portfolio</a>  <a href="#portfolio"  class="zh">作品集</a></li>
+      <li><a href="#contact"    class="en">Contact</a>    <a href="#contact"    class="zh">联系</a></li>
+    </ul>
+
+    <div class="lang-toggle" role="group" aria-label="Language selector">
+      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn"        id="btn-zh" onclick="setLang('zh')">中文</button>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section id="hero">
+  <div class="blob blob-yellow" aria-hidden="true"></div>
+  <div class="blob blob-mint"   aria-hidden="true"></div>
+  <div class="blob blob-coral"  aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <!-- LEFT: text -->
+    <div class="hero-left">
+      <div class="hero-tag en">✦ Open to opportunities · Bay Area · LA · Seattle &amp; Remote</div>
+      <div class="hero-tag zh">✦ 正在求职中 · 湾区 · 洛杉矶 · 西雅图 &amp; 远程均可</div>
+
+      <h1 class="hero-h1 en">
+        Hi, I'm Wendy 👋<br>
+        I'm a growth marketer who makes<br>
+        <span class="accent">every dollar count</span>
+      </h1>
+      <h1 class="hero-h1 zh">
+        你好，我是 Wendy 👋<br>
+        我是一名增长营销人，让你花的每一分钱都<span class="accent">物有所值</span>
+      </h1>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-number">9M+</span>
+          <span class="stat-label en">annual views</span>
+          <span class="stat-label zh">年度曝光量</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">55%</span>
+          <span class="stat-label en">YoY account growth</span>
+          <span class="stat-label zh">账号年增长</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">$400K</span>
+          <span class="stat-label en">ad spend managed</span>
+          <span class="stat-label zh">广告预算管理</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">300K+</span>
+          <span class="stat-label en">new users/yr</span>
+          <span class="stat-label zh">年新增用户</span>
+        </div>
+      </div>
+
+      <p class="hero-subtitle en">
+        Around 4 years of integrated campaigns across paid, organic, and social. Whether it's GTM launches, creator ops, or SEO, every move I make ties back to one thing: growth. I've managed $400K+ in ad spend, helped drive 300K+ new users annually, and built AI tools that make great content scale.
+      </p>
+      <p class="hero-subtitle zh">
+        约 4 年整合营销经验，横跨付费广告、自然流量与社媒运营。无论是 GTM 上线、达人运营还是 SEO，我的每一步都指向同一个目标：增长。管理过 $400K+ 广告预算，每年助力 300K+ 新用户增长，并搭建 AI 工具让优质内容规模化落地。
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#portfolio" class="btn-dark en">See my work ↓</a>
+        <a href="#portfolio" class="btn-dark zh">查看作品集 ↓</a>
+        <a href="#" class="btn-outline en">Download resume</a>
+        <a href="#" class="btn-outline zh">下载简历</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: avatar -->
+    <div class="avatar-wrap">
+      <div class="avatar-ring">
+        <div class="avatar-inner">
+          <!-- photo.jpg found in the same folder — swap src if you rename the file -->
+          <img src="photo.jpg" alt="Wendy Ao" onerror="this.style.display='none';this.parentElement.innerHTML='🌸';" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ABOUT ME
+============================================================ -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">
+      <span class="en">About me</span><span class="zh">关于我</span>
+    </div>
+
+    <p class="about-body en">
+      I'm a growth marketer based in the Bay Area with around 4 years of experience turning marketing into measurable business results. I started out running offline events and GTM launches at Tripalink, then moved into full-funnel user acquisition at ShipSaving, covering SEO, Google Ads, influencer campaigns, social content, and email campaigns to drive SMB reviews and improve platform rankings. Most recently, I led user acquisition at Weee!, one of North America's largest Asian e-commerce platforms, owning paid ads, social media, and creator ops end-to-end.
+    </p>
+    <p class="about-body zh">
+      我是一名湾区增长营销人，拥有约 4 年将营销转化为可量化业务成果的经验。从 Tripalink 的线下活动策划与 GTM 落地起步，到在 ShipSaving 负责全链路用户增长——覆盖 SEO、Google Ads、达人合作、社媒内容和邮件营销。最终在 Weee!（北美最大亚裔电商平台之一）主导付费广告、社交媒体和达人运营。
+    </p>
+
+    <div class="open-to-row">
+      <span class="open-to-label en">Currently open to →</span>
+      <span class="open-to-label zh">目前正在寻找 →</span>
+      <div class="chips-wrap">
+        <span class="chip-role en">Growth Marketing</span>
+        <span class="chip-role zh">增长营销</span>
+        <span class="chip-role en">Social Media Manager</span>
+        <span class="chip-role zh">社媒运营</span>
+        <span class="chip-role en">Creator / UGC Ops</span>
+        <span class="chip-role zh">达人/UGC 运营</span>
+        <span class="chip-role en">Paid Social</span>
+        <span class="chip-role zh">付费社媒</span>
+        <span class="chip-role en">AI Content Roles</span>
+        <span class="chip-role zh">AI 内容岗位</span>
+      </div>
+    </div>
+
+    <!-- fun facts always bilingual -->
+    <div class="chips-wrap">
+      <span class="chip-fun">Bay Area, CA 🌉</span>
+      <span class="chip-fun">Bilingual EN/ZH · 中英双语</span>
+      <span class="chip-fun">USC · LSE · Temple 🎓</span>
+      <span class="chip-fun">iced latte dependent ☕</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SKILLS
+============================================================ -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">
+      <span class="en">Skills</span><span class="zh">技能</span>
+    </div>
+
+    <h2 class="section-title en">What I bring to the table 🍱</h2>
+    <h2 class="section-title zh">我能带来什么 🍱</h2>
+
+    <div class="skills-grid">
+      <span class="skill-pill pill-yellow">📱 <span class="en">Xiaohongshu / Rednote</span><span class="zh">小红书运营</span></span>
+      <span class="skill-pill pill-teal">📸 Instagram</span>
+      <span class="skill-pill pill-coral">✍️ <span class="en">Bilingual Copywriting</span><span class="zh">中英双语文案</span></span>
+      <span class="skill-pill pill-yellow">🎨 <span class="en">Content Strategy</span><span class="zh">内容策略</span></span>
+      <span class="skill-pill pill-gray">🤝 <span class="en">Creator / KOL / UGC Ops</span><span class="zh">达人/KOL/UGC 运营</span></span>
+      <span class="skill-pill pill-teal">🔍 SEO</span>
+      <span class="skill-pill pill-coral">🤖 <span class="en">AI Tooling · Claude API</span><span class="zh">AI 工具搭建 · Claude API</span></span>
+      <span class="skill-pill pill-yellow">📊 <span class="en">Paid Ads · Google · Meta · Rednote</span><span class="zh">付费广告 · Google · Meta · 小红书</span></span>
+      <span class="skill-pill pill-gray">🎬 <span class="en">Livestream Commerce</span><span class="zh">直播电商</span></span>
+      <span class="skill-pill pill-teal">🐍 Python / Flask</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     WORK EXPERIENCE
+============================================================ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">
+      <span class="en">Experience</span><span class="zh">工作经历</span>
+    </div>
+
+    <h2 class="section-title en">Where I've built things 🗺️</h2>
+    <h2 class="section-title zh">我在哪里成长 🗺️</h2>
+
+    <div class="cards-stack">
+
+      <!-- Weee! -->
+      <div class="exp-card">
+        <div class="card-header">
+          <div class="logo-sq">🛒</div>
+          <div class="card-meta">
+            <div class="card-company">
+              Weee!
+              <a href="https://www.sayweee.com" target="_blank" rel="noopener">↗ sayweee.com</a>
+            </div>
+            <div class="card-subtitle en">North America's largest Asian online grocery · Fremont, CA</div>
+            <div class="card-subtitle zh">北美最大亚裔线上生鲜电商 · 加州弗里蒙特</div>
+          </div>
+          <div class="card-date">Jan 2024 – Jun 2026</div>
+        </div>
+        <div class="card-role en">Marketing Specialist · Growth, Paid &amp; Social</div>
+        <div class="card-role zh">营销专员 · 增长、付费广告 &amp; 社媒</div>
+        <p class="card-body en">[PLACEHOLDER — Weee! paragraph to be updated]</p>
+        <p class="card-body zh">[占位符 — Weee! 中文段落待更新]</p>
+        <div class="badge-row">
+          <span class="badge badge-yellow">🚀 9M+ annual views</span>
+          <span class="badge badge-yellow">📈 +55% YoY growth</span>
+          <span class="badge badge-yellow">💰 $400K ad spend</span>
+          <span class="badge badge-yellow">🎯 42.7% booking lift</span>
+          <span class="badge badge-yellow">👥 300K+ new users/yr</span>
+          <span class="badge badge-yellow">🤖 AI tool built</span>
+        </div>
+      </div>
+
+      <!-- Erka Media -->
+      <div class="exp-card">
+        <div class="card-header">
+          <div class="logo-sq">📡</div>
+          <div class="card-meta">
+            <div class="card-company">Erka Media</div>
+            <div class="card-subtitle en">TikTok livestream commerce agency · Los Angeles, CA</div>
+            <div class="card-subtitle zh">TikTok 直播电商机构 · 洛杉矶</div>
+          </div>
+          <div class="card-date">Dec 2023 – Jan 2024</div>
+        </div>
+        <div class="card-role en">Livestream Operations Assistant (Contract)</div>
+        <div class="card-role zh">直播运营助理（合同制）</div>
+        <p class="card-body en">[PLACEHOLDER — Erka Media paragraph to be updated]</p>
+        <p class="card-body zh">[占位符 — Erka Media 中文段落待更新]</p>
+        <div class="badge-row">
+          <span class="badge badge-teal">🎬 1M+ audience campaigns</span>
+          <span class="badge badge-teal">💸 $42K GMV / 4hrs</span>
+        </div>
+      </div>
+
+      <!-- ShipSaving -->
+      <div class="exp-card">
+        <div class="card-header">
+          <div class="logo-sq">📦</div>
+          <div class="card-meta">
+            <div class="card-company">
+              ShipSaving
+              <a href="https://www.shipsaving.com" target="_blank" rel="noopener">↗ shipsaving.com</a>
+            </div>
+            <div class="card-subtitle en">Shipping software platform · City of Industry, CA</div>
+            <div class="card-subtitle zh">物流运费对比 SaaS 平台 · 加州工业市</div>
+          </div>
+          <div class="card-date">Dec 2022 – Sep 2023</div>
+        </div>
+        <div class="card-role en">Marketing Associate · User Acquisition</div>
+        <div class="card-role zh">营销专员 · 用户增长</div>
+        <p class="card-body en">At ShipSaving, I owned user acquisition end-to-end — from GTM execution on a major UPS partnership launch to managing a $4K/month Google Ads budget that consistently delivered 12% CTR, 9% CVR, and 200+ new SMB users weekly. I drove 83% organic traffic growth in 6 months through a full-stack SEO strategy: keyword research, guest blogging, backlink outreach, and Google Search Console cleanup. I also ran influencer partnerships across Xiaohongshu and YouTube — growing the XHS following 120% YoY and lifting engagement by 20%.</p>
+        <p class="card-body zh">在 ShipSaving，我全权负责用户增长 — 从主导 UPS 合作项目的 GTM 落地，到日常管理 $4K/月 Google Ads 预算，稳定实现 12% CTR、9% CVR 和每周 200+ 新用户获取。通过完整的 SEO 策略在 6 个月内实现 83% 自然流量增长。同时负责小红书和 YouTube 达人合作，推动小红书账号粉丝 120% 年增长，互动率提升 20%。</p>
+        <div class="badge-row">
+          <span class="badge badge-blue">📈 83% organic traffic ↑</span>
+          <span class="badge badge-blue">🎯 12% CTR · 9% CVR</span>
+          <span class="badge badge-blue">👤 200+ SMB users/week</span>
+          <span class="badge badge-blue">📱 120% XHS growth YoY</span>
+        </div>
+      </div>
+
+      <!-- Tripalink -->
+      <div class="exp-card">
+        <div class="card-header">
+          <div class="logo-sq">🏠</div>
+          <div class="card-meta">
+            <div class="card-company">Tripalink</div>
+            <div class="card-subtitle en">Co-living platform · Los Angeles, CA</div>
+            <div class="card-subtitle zh">共居生活平台 · 洛杉矶</div>
+          </div>
+          <div class="card-date">Aug 2022 – Nov 2022</div>
+        </div>
+        <div class="card-role en">Regional Marketing Specialist · Demand Generation</div>
+        <div class="card-role zh">区域营销专员 · 需求获取</div>
+        <p class="card-body en">At Tripalink, I drove demand generation across West LA and Seattle through a mix of on-the-ground activations and digital partnerships. I planned and executed 3 community events including a Halloween activation with 100+ attendees, and ran 7 UCLA campus activations that collected 300+ qualified leads — directly contributing to 98%+ occupancy and a 38% renewal rate. I also built co-marketing partnerships with Yami and Fantuan Delivery, optimized property listings with SEO keywords across rental platforms, and generated 20 positive Google reviews during key turnover periods.</p>
+        <p class="card-body zh">在 Tripalink，我通过线下活动与数字营销组合拳驱动西洛杉矶和西雅图的需求增长。策划并执行了 3 场社区活动（含 100+ 人参与的万圣节活动），在 UCLA 校园开展 7 场地推，收集 300+ 高意向潜客线索，直接助力销售团队实现 98%+ 入住率和 38% 续租率。同时与亚米网和饭团外卖达成联合营销合作，优化各租房平台的 SEO 关键词，并在关键换租期内积累了 20 条 Google 好评。</p>
+        <div class="badge-row">
+          <span class="badge badge-teal">🎪 100+ attendee Halloween event</span>
+          <span class="badge badge-teal">📍 300+ qualified leads</span>
+          <span class="badge badge-teal">🏠 98%+ occupancy rate</span>
+          <span class="badge badge-teal">🔄 38% renewal rate</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EDUCATION
+============================================================ -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">
+      <span class="en">Education</span><span class="zh">教育背景</span>
+    </div>
+
+    <h2 class="section-title en">Where I studied 🎓</h2>
+    <h2 class="section-title zh">我在哪里学习 🎓</h2>
+
+    <div class="cards-stack">
+
+      <!-- USC -->
+      <div class="exp-card">
+        <div class="card-header">
+          <div class="logo-sq blue-logo">🏛️</div>
+          <div class="card-meta">
+            <div class="card-company">
+              University of Southern California
+              <a href="https://www.usc.edu" target="_blank" rel="noopener">↗ usc.edu</a>
+            </div>
+          </div>
+          <div class="card-date">2022</div>
+        </div>
+        <div class="edu-degree en">M.A. Global Communication</div>
+        <div class="edu-degree zh">全球传播学 硕士</div>
+        <div class="badge-row">
+          <span class="badge badge-blue">🎓 USC · Los Angeles, CA</span>
+        </div>
+      </div>
+
+      <!-- LSE -->
+      <div class="exp-card">
+        <div class="card-header">
+          <div class="logo-sq blue-logo">🇬🇧</div>
+          <div class="card-meta">
+            <div class="card-company">
+              London School of Economics
+              <a href="https://www.lse.ac.uk" target="_blank" rel="noopener">↗ lse.ac.uk</a>
+            </div>
+          </div>
+          <div class="card-date">2022</div>
+        </div>
+        <div class="edu-degree en">M.S. Global Media and Communication</div>
+        <div class="edu-degree zh">全球媒体与传播 理学硕士</div>
+        <div class="badge-row">
+          <span class="badge badge-blue">🎓 LSE · London, UK</span>
+        </div>
+      </div>
+
+      <!-- Temple -->
+      <div class="exp-card">
+        <div class="card-header">
+          <div class="logo-sq blue-logo">🦉</div>
+          <div class="card-meta">
+            <div class="card-company">
+              Temple University
+              <a href="https://www.temple.edu" target="_blank" rel="noopener">↗ temple.edu</a>
+            </div>
+          </div>
+          <div class="card-date">2020</div>
+        </div>
+        <div class="edu-degree en">B.A. Communication Studies</div>
+        <div class="edu-degree zh">传播学 学士</div>
+        <div class="badge-row">
+          <span class="badge badge-blue">🏅 Cum Laude · Top 9%</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PORTFOLIO
+============================================================ -->
+<section id="portfolio">
+  <div class="container">
+    <div class="section-label">
+      <span class="en">Portfolio</span><span class="zh">作品集</span>
+    </div>
+
+    <h2 class="section-title en">Selected work ✨</h2>
+    <h2 class="section-title zh">精选作品 ✨</h2>
+
+    <div class="filter-row" role="group" aria-label="Portfolio filter">
+      <button class="filter-btn active" data-filter="all">
+        <span class="en">All</span><span class="zh">全部</span>
+      </button>
+      <button class="filter-btn" data-filter="xhs">📱 XHS</button>
+      <button class="filter-btn" data-filter="reel">🎬 Reels</button>
+      <button class="filter-btn" data-filter="ai">🤖 AI Content</button>
+      <button class="filter-btn" data-filter="campaign">📣 Campaigns</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolio-grid">
+
+      <a href="#" class="port-card" data-category="xhs">
+        <div class="port-thumb" style="background:#FFEEEE;">📱</div>
+        <div class="port-info">
+          <span class="port-tag" style="background:#FFF3B0;color:#7A6200;">📱 XHS</span>
+          <div class="port-title">
+            <span class="en">Viral product launch</span>
+            <span class="zh">爆款产品发布帖</span>
+          </div>
+          <div class="port-meta en">亚小超 · 10k+ likes</div>
+          <div class="port-meta zh">亚小超 · 10k+ 点赞</div>
+        </div>
+      </a>
+
+      <a href="#" class="port-card" data-category="reel">
+        <div class="port-thumb" style="background:#EEF4FF;">🎬</div>
+        <div class="port-info">
+          <span class="port-tag" style="background:#EEF4FF;color:#1a4fa8;">🎬 Reel</span>
+          <div class="port-title">
+            <span class="en">New year campaign</span>
+            <span class="zh">新年活动 Reel</span>
+          </div>
+          <div class="port-meta">@weee_official</div>
+        </div>
+      </a>
+
+      <a href="#" class="port-card" data-category="ai">
+        <div class="port-thumb" style="background:#F0FFF8;">🤖</div>
+        <div class="port-info">
+          <span class="port-tag" style="background:#E1F5EE;color:#0F6E56;">🤖 AI Video</span>
+          <div class="port-title">
+            <span class="en">AI promo video</span>
+            <span class="zh">AI 生成宣传视频</span>
+          </div>
+          <div class="port-meta">Claude API + video gen</div>
+        </div>
+      </a>
+
+      <a href="#" class="port-card" data-category="campaign">
+        <div class="port-thumb" style="background:#FFFBF0;">📣</div>
+        <div class="port-info">
+          <span class="port-tag" style="background:#FAECE7;color:#712B13;">📣 Campaign</span>
+          <div class="port-title">
+            <span class="en">KOL seeding campaign</span>
+            <span class="zh">KOL 种草活动</span>
+          </div>
+          <div class="port-meta en">20+ creators · XHS &amp; IG</div>
+          <div class="port-meta zh">20+ 达人 · 小红书 &amp; IG</div>
+        </div>
+      </a>
+
+      <a href="#" class="port-card" data-category="xhs">
+        <div class="port-thumb" style="background:#FFEEEE;">📱</div>
+        <div class="port-info">
+          <span class="port-tag" style="background:#FFF3B0;color:#7A6200;">📱 XHS</span>
+          <div class="port-title">
+            <span class="en">小包子 seasonal content</span>
+            <span class="zh">小包子 节日内容</span>
+          </div>
+          <div class="port-meta en">小包子 · Top 5%</div>
+          <div class="port-meta zh">小包子 · 互动前 5%</div>
+        </div>
+      </a>
+
+      <a href="#" class="port-card" data-category="ai">
+        <div class="port-thumb" style="background:#F0FFF8;">⚙️</div>
+        <div class="port-info">
+          <span class="port-tag" style="background:#E1F5EE;color:#0F6E56;">🤖 AI Tool</span>
+          <div class="port-title">
+            <span class="en">Copywriting automation</span>
+            <span class="zh">文案自动化工具</span>
+          </div>
+          <div class="port-meta">Python · Flask · Claude API</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT FOOTER
+============================================================ -->
+<footer id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="contact-title en">Let's work together ✦</div>
+      <div class="contact-title zh">期待与你合作 ✦</div>
+      <p class="contact-sub en">Bay Area · LA · Seattle · Open to remote · H1B transfer welcome · wentingao@alumni.usc.edu</p>
+      <p class="contact-sub zh">湾区 · 洛杉矶 · 西雅图 · 接受远程 · 支持 H1B 转签 · wentingao@alumni.usc.edu</p>
+    </div>
+    <div class="contact-buttons">
+      <a href="mailto:wentingao@alumni.usc.edu" class="btn-yellow en">Email me 📬</a>
+      <a href="mailto:wentingao@alumni.usc.edu" class="btn-yellow zh">发邮件 📬</a>
+      <a href="https://www.linkedin.com/in/wentingao" target="_blank" rel="noopener" class="btn-ghost-white">LinkedIn ↗</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+  /* ----------------------------------------------------------
+     Language toggle
+     Uses inline styles (beats any CSS specificity) so component
+     display values like inline-flex are correctly restored.
+  ---------------------------------------------------------- */
+  function setLang(lang) {
+    const enEls = document.querySelectorAll('.en');
+    const zhEls = document.querySelectorAll('.zh');
+
+    if (lang === 'zh') {
+      enEls.forEach(el => { el.style.display = 'none'; });
+      zhEls.forEach(el => { el.style.display = ''; });
+      document.getElementById('btn-en').classList.remove('active');
+      document.getElementById('btn-zh').classList.add('active');
+      document.documentElement.lang = 'zh';
+    } else {
+      zhEls.forEach(el => { el.style.display = 'none'; });
+      enEls.forEach(el => { el.style.display = ''; });
+      document.getElementById('btn-zh').classList.remove('active');
+      document.getElementById('btn-en').classList.add('active');
+      document.documentElement.lang = 'en';
+    }
+  }
+
+  /* Initialize: hide all ZH elements on page load */
+  document.querySelectorAll('.zh').forEach(el => { el.style.display = 'none'; });
+
+  /* ----------------------------------------------------------
+     Portfolio filter
+  ---------------------------------------------------------- */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const portCards  = document.querySelectorAll('#portfolio-grid .port-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+      portCards.forEach(card => {
+        if (filter === 'all' || card.dataset.category === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  /* ----------------------------------------------------------
+     Smooth scroll for nav links
+  ---------------------------------------------------------- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
