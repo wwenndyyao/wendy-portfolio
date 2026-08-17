@@ -718,6 +718,182 @@
     ============================================================ */
     #portfolio { background: var(--bg-white); }
 
+    .featured-case {
+      margin: 28px 0 42px;
+      padding: 30px;
+      border: 1px solid #F2D27B;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #FFF9E7 0%, #FFFDF7 52%, #F4FFF9 100%);
+    }
+
+    .case-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .case-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8A6D00;
+      margin-bottom: 9px;
+    }
+
+    .case-title {
+      font-size: 25px;
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .case-summary {
+      max-width: 690px;
+      color: #4F4F4F;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .case-profile-link {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 15px;
+      border: 1px solid #D7B64E;
+      border-radius: 999px;
+      color: #725A00;
+      font-size: 12px;
+      font-weight: 600;
+      background: rgba(255,255,255,0.72);
+    }
+
+    .case-profile-link:hover { background: #fff; }
+
+    .case-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .case-chip {
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(205,176,83,0.35);
+      color: #5D522D;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .creative-lanes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .creative-lane {
+      padding: 17px 18px;
+      border-radius: 15px;
+      border: 1px solid rgba(0,0,0,0.07);
+      background: rgba(255,255,255,0.78);
+    }
+
+    .lane-kicker {
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    .lane-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .lane-copy {
+      font-size: 12px;
+      color: #5C5C5C;
+      line-height: 1.65;
+    }
+
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    .instagram-project {
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.09);
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .instagram-project-head {
+      padding: 16px 17px 14px;
+      border-bottom: 1px solid #EFEFEF;
+    }
+
+    .reel-type {
+      display: inline-block;
+      margin-bottom: 7px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #A14F2A;
+    }
+
+    .reel-title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.45;
+      margin-bottom: 5px;
+    }
+
+    .reel-insight {
+      font-size: 11px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .instagram-embed-wrap {
+      min-height: 540px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 10px;
+      background: #FAFAFA;
+    }
+
+    .instagram-embed-wrap .instagram-media {
+      min-width: 0 !important;
+      width: 100% !important;
+      max-width: 540px !important;
+      margin: 0 !important;
+    }
+
+    .portfolio-next {
+      margin: 0 0 18px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .featured-case { padding: 22px; }
+      .case-header { flex-direction: column; }
+      .creative-lanes,
+      .instagram-grid { grid-template-columns: 1fr; }
+      .instagram-embed-wrap { min-height: 500px; }
+    }
+
     .filter-row {
       display: flex;
       flex-wrap: wrap;
@@ -1372,6 +1548,119 @@
     <h2 class="section-title en">Selected work ✨</h2>
     <h2 class="section-title zh">精选作品 ✨</h2>
 
+    <article class="featured-case" id="mango-pets-case">
+      <div class="case-header">
+        <div>
+          <div class="case-eyebrow en">Featured social case study · 2026</div>
+          <div class="case-eyebrow zh">精选社交媒体案例 · 2026</div>
+          <h3 class="case-title en">Mango Pets US · Product storytelling for cat people</h3>
+          <h3 class="case-title zh">Mango Pets US · 为养猫人而做的产品叙事</h3>
+          <p class="case-summary en">As a part-time social content creator for a cat-products brand, I produce hands-on short-form video that makes product benefits easy to understand without losing the personality of the feed. The work spans two complementary modes: clear, conversion-minded product demonstrations and trend-led concepts built around real cat behavior and owner pain points.</p>
+          <p class="case-summary zh">作为猫咪用品品牌的兼职社交媒体内容创作者，我通过亲自拍摄短视频，让产品卖点更容易被理解，同时保留社交平台需要的趣味与个性。内容主要分为两种互补方向：清晰、以转化为导向的产品展示，以及从真实猫咪行为和养猫痛点出发的趋势型创意。</p>
+        </div>
+        <a class="case-profile-link" href="https://www.instagram.com/mangopetsus/" target="_blank" rel="noopener">@mangopetsus ↗</a>
+      </div>
+
+      <div class="case-meta-row">
+        <span class="case-chip en">📹 Hands-on video production</span>
+        <span class="case-chip zh">📹 短视频实拍制作</span>
+        <span class="case-chip en">🛍️ Product storytelling</span>
+        <span class="case-chip zh">🛍️ 产品叙事</span>
+        <span class="case-chip en">🐈 Consumer-first hooks</span>
+        <span class="case-chip zh">🐈 用户痛点型 Hook</span>
+        <span class="case-chip en">✨ Trend adaptation</span>
+        <span class="case-chip zh">✨ 趋势内容转化</span>
+      </div>
+
+      <div class="creative-lanes">
+        <div class="creative-lane">
+          <div class="lane-kicker en">01 · Product-first</div>
+          <div class="lane-kicker zh">01 · 产品优先</div>
+          <div class="lane-title en">Make the benefit instantly legible</div>
+          <div class="lane-title zh">让卖点在几秒内被看懂</div>
+          <p class="lane-copy en">Clean demonstrations turn size, posture, splash protection and easier cleanup into visual proof—not a list of product claims.</p>
+          <p class="lane-copy zh">通过清晰的产品演示，把大空间、进食姿势、防溅和易清洁等卖点转化为画面证据，而不是堆砌功能说明。</p>
+        </div>
+        <div class="creative-lane">
+          <div class="lane-kicker en">02 · Social-first</div>
+          <div class="lane-kicker zh">02 · 社交优先</div>
+          <div class="lane-title en">Lead with the cat-owner truth</div>
+          <div class="lane-title zh">先从养猫人的真实感受切入</div>
+          <p class="lane-copy en">POV formats, recognizable cat behavior and trend-aware pacing make the content feel native to Instagram before the product reveal earns its place.</p>
+          <p class="lane-copy zh">借助 POV、熟悉的猫咪行为与趋势化节奏，让内容先像一条自然的 Instagram 视频，再让产品顺理成章地出现。</p>
+        </div>
+      </div>
+
+      <div class="instagram-grid">
+        <article class="instagram-project">
+          <div class="instagram-project-head">
+            <span class="reel-type en">Product demo · XXL litter box</span>
+            <span class="reel-type zh">产品展示 · XXL 猫砂盆</span>
+            <div class="reel-title en">“Big box energy” turns scale into the story</div>
+            <div class="reel-title zh">用 “Big box energy” 把产品尺寸变成故事</div>
+            <p class="reel-insight en">A simple visual comparison makes extra space and high sides immediately understandable for big cats and enthusiastic diggers.</p>
+            <p class="reel-insight zh">用直观的画面对比，让大空间与高边设计对大体型猫咪和爱刨砂猫咪的价值一眼可见。</p>
+          </div>
+          <div class="instagram-embed-wrap">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaifTl4Mxpp/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
+              <a href="https://www.instagram.com/reel/DaifTl4Mxpp/" target="_blank" rel="noopener">View XXL litter box reel on Instagram ↗</a>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="instagram-project">
+          <div class="instagram-project-head">
+            <span class="reel-type en">Product demo · Dining table</span>
+            <span class="reel-type zh">产品展示 · 猫咪餐桌</span>
+            <div class="reel-title en">Three benefits, one clean product story</div>
+            <div class="reel-title zh">三个核心卖点，一条清晰的产品故事</div>
+            <p class="reel-insight en">Better posture, less mess and a polished setup are translated into an easy-to-follow product experience.</p>
+            <p class="reel-insight zh">把更舒适的进食姿势、更少的脏乱与更美观的使用场景，转化为易理解的产品体验。</p>
+          </div>
+          <div class="instagram-embed-wrap">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZ-YYh7smvv/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
+              <a href="https://www.instagram.com/reel/DZ-YYh7smvv/" target="_blank" rel="noopener">View dining table reel on Instagram ↗</a>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="instagram-project">
+          <div class="instagram-project-head">
+            <span class="reel-type en">Trend-led · Cat behavior</span>
+            <span class="reel-type zh">趋势内容 · 猫咪行为</span>
+            <div class="reel-title en">Treat motivation as the social hook</div>
+            <div class="reel-title zh">把猫咪对零食的反应变成社交 Hook</div>
+            <p class="reel-insight en">A familiar cat-owner moment creates instant recognition before the content asks the audience to notice the product.</p>
+            <p class="reel-insight zh">从养猫人熟悉的零食反应切入，在产品出现之前先建立共鸣与观看兴趣。</p>
+          </div>
+          <div class="instagram-embed-wrap">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbUIsn1vtlb/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
+              <a href="https://www.instagram.com/reel/DbUIsn1vtlb/" target="_blank" rel="noopener">View cat-treat reel on Instagram ↗</a>
+            </blockquote>
+          </div>
+        </article>
+
+        <article class="instagram-project">
+          <div class="instagram-project-head">
+            <span class="reel-type en">POV creative · Owner pain point</span>
+            <span class="reel-type zh">POV 创意 · 养猫痛点</span>
+            <div class="reel-title en">The messy eater becomes the protagonist</div>
+            <div class="reel-title zh">让“吃饭很乱的猫”成为主角</div>
+            <p class="reel-insight en">A recognizable frustration leads the story; the splash guard and cleaner floor arrive as the visual payoff.</p>
+            <p class="reel-insight zh">用容易共鸣的脏乱痛点推动故事，再让防溅设计与更干净的地面成为画面上的解决方案。</p>
+          </div>
+          <div class="instagram-embed-wrap">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaBAesNsQ4U/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
+              <a href="https://www.instagram.com/reel/DaBAesNsQ4U/" target="_blank" rel="noopener">View messy-eater POV reel on Instagram ↗</a>
+            </blockquote>
+          </div>
+        </article>
+      </div>
+    </article>
+
+    <h3 class="portfolio-next en">More selected work</h3>
+    <h3 class="portfolio-next zh">更多精选作品</h3>
+
     <div class="filter-row" role="group" aria-label="Portfolio filter">
       <button class="filter-btn active" data-filter="all">
         <span class="en">All</span><span class="zh">全部</span>
@@ -1545,7 +1834,9 @@
   });
 </script>
 
+<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
