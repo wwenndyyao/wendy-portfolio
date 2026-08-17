@@ -867,11 +867,40 @@
     .instagram-embed-wrap {
       min-height: 540px;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
       padding: 10px;
+      overflow: hidden;
       background: #FAFAFA;
     }
+
+    .reel-engagement {
+      position: relative;
+      z-index: 4;
+      width: 100%;
+      max-width: 540px;
+      min-height: 78px;
+      margin-top: -78px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      background: #fff;
+      border-top: 1px solid #E8E8E8;
+      font-size: 12px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .reel-engagement a {
+      margin-left: auto;
+      color: #3F51E8;
+      white-space: nowrap;
+    }
+
+    .reel-engagement a:hover { text-decoration: underline; }
 
     .instagram-embed-wrap .instagram-media {
       min-width: 0 !important;
@@ -981,6 +1010,7 @@
 
     .portfolio-detail-view {
       position: fixed;
+      padding: 0;
       inset: 56px 0 0;
       z-index: 90;
       background: var(--bg-white);
@@ -1987,6 +2017,11 @@
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaifTl4Mxpp/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
               <a href="https://www.instagram.com/reel/DaifTl4Mxpp/" target="_blank" rel="noopener">View XXL litter box reel on Instagram ↗</a>
             </blockquote>
+            <div class="reel-engagement" aria-label="342 likes and 22 comments on Instagram">
+              <span>♥ 342 likes</span>
+              <span>💬 22 comments</span>
+              <a href="https://www.instagram.com/reel/DaifTl4Mxpp/" target="_blank" rel="noopener">View live post ↗</a>
+            </div>
           </div>
         </article>
 
@@ -2003,6 +2038,11 @@
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZ-YYh7smvv/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
               <a href="https://www.instagram.com/reel/DZ-YYh7smvv/" target="_blank" rel="noopener">View dining table reel on Instagram ↗</a>
             </blockquote>
+            <div class="reel-engagement" aria-label="90 likes and 3 comments on Instagram">
+              <span>♥ 90 likes</span>
+              <span>💬 3 comments</span>
+              <a href="https://www.instagram.com/reel/DZ-YYh7smvv/" target="_blank" rel="noopener">View live post ↗</a>
+            </div>
           </div>
         </article>
 
@@ -2019,6 +2059,11 @@
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbUIsn1vtlb/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
               <a href="https://www.instagram.com/reel/DbUIsn1vtlb/" target="_blank" rel="noopener">View cat-treat reel on Instagram ↗</a>
             </blockquote>
+            <div class="reel-engagement" aria-label="8 likes and 1 comments on Instagram">
+              <span>♥ 8 likes</span>
+              <span>💬 1 comments</span>
+              <a href="https://www.instagram.com/reel/DbUIsn1vtlb/" target="_blank" rel="noopener">View live post ↗</a>
+            </div>
           </div>
         </article>
 
@@ -2035,6 +2080,11 @@
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaBAesNsQ4U/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14">
               <a href="https://www.instagram.com/reel/DaBAesNsQ4U/" target="_blank" rel="noopener">View messy-eater POV reel on Instagram ↗</a>
             </blockquote>
+            <div class="reel-engagement" aria-label="37 likes and 1 comments on Instagram">
+              <span>♥ 37 likes</span>
+              <span>💬 1 comments</span>
+              <a href="https://www.instagram.com/reel/DaBAesNsQ4U/" target="_blank" rel="noopener">View live post ↗</a>
+            </div>
           </div>
         </article>
       </div>
@@ -2236,6 +2286,7 @@
 <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
