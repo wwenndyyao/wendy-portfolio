@@ -1189,6 +1189,161 @@
       .panel-story-grid { grid-template-columns: 1fr; }
     }
 
+    /* Social Growth: company-level case-study switcher */
+    .social-case-intro {
+      margin-bottom: 22px;
+    }
+    .social-case-intro h3 {
+      margin: 0 0 8px;
+      font-size: clamp(25px, 3vw, 38px);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+    .social-case-intro p {
+      margin: 0;
+      max-width: 760px;
+      color: #666;
+      line-height: 1.7;
+    }
+    .social-company-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .social-company-card {
+      position: relative;
+      min-height: 150px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #fff;
+      color: var(--dark);
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .social-company-card:hover {
+      transform: translateY(-2px);
+      border-color: #cfcfcf;
+      box-shadow: 0 12px 30px rgba(20, 20, 20, .07);
+    }
+    .social-company-card.active {
+      border-color: var(--company-accent, var(--mint));
+      background: var(--company-soft, #f4fbf8);
+      box-shadow: inset 0 0 0 1px var(--company-accent, var(--mint));
+    }
+    .social-company-card[data-social-company="mango"] {
+      --company-accent: #e3b832;
+      --company-soft: #fff9e6;
+    }
+    .social-company-card[data-social-company="weee"] {
+      --company-accent: #18a8d8;
+      --company-soft: #eefaff;
+    }
+    .social-company-card[data-social-company="shipsaving"] {
+      --company-accent: #5c8d82;
+      --company-soft: #f0f8f5;
+    }
+    .social-company-card .company-label {
+      display: block;
+      margin-bottom: 14px;
+      color: #888;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+    .social-company-card .company-name {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+    .social-company-card .company-focus {
+      display: block;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .social-company-card .company-selected {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      opacity: 0;
+      color: var(--company-accent, var(--mint));
+      font-weight: 700;
+      transition: opacity .18s ease;
+    }
+    .social-company-card.active .company-selected { opacity: 1; }
+    .social-company-panel[hidden] { display: none !important; }
+    .social-company-case {
+      padding: clamp(28px, 4vw, 54px);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background: linear-gradient(145deg, #fff 0%, var(--case-soft, #f7fbfa) 100%);
+    }
+    .social-company-case.weee-case { --case-soft: #eefaff; }
+    .social-company-case.shipsaving-case { --case-soft: #f0f8f5; }
+    .social-company-case .case-eyebrow { margin-bottom: 12px; }
+    .social-company-case .case-title { max-width: 850px; }
+    .social-company-case .case-summary { max-width: 900px; }
+    .company-story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .company-story {
+      padding: 22px;
+      border: 1px solid rgba(30, 30, 30, .09);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, .82);
+    }
+    .company-story .story-number {
+      display: block;
+      margin-bottom: 12px;
+      color: #888;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .company-story h4 {
+      margin: 0 0 9px;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+    .company-story p {
+      margin: 0;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .company-work-ready {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 18px;
+      padding: 20px 22px;
+      border: 1px dashed rgba(30, 30, 30, .2);
+      border-radius: 16px;
+      background: rgba(255,255,255,.62);
+    }
+    .company-work-ready strong { display: block; margin-bottom: 4px; }
+    .company-work-ready span { color: #777; font-size: 13px; line-height: 1.55; }
+    .company-work-ready .ready-icon { font-size: 24px; }
+    @media (max-width: 760px) {
+      .social-company-grid,
+      .company-story-grid { grid-template-columns: 1fr; }
+      .social-company-card { min-height: 126px; }
+      .social-company-case { padding: 24px 18px; border-radius: 20px; }
+      .company-work-ready { align-items: flex-start; }
+    }
+
     .filter-row {
       display: flex;
       flex-wrap: wrap;
@@ -1960,7 +2115,42 @@
       </section>
 
       <section class="portfolio-panel" data-portfolio-panel="social" hidden>
-    <article class="featured-case" id="mango-pets-case">
+        <div class="social-case-intro">
+          <h3 class="en">Social Growth by Company</h3>
+          <h3 class="zh">按公司浏览社交媒体增长案例</h3>
+          <p class="en">Three environments, three different growth challenges. Choose a company to see how I adapted the strategy, creative system, and execution model to the business.</p>
+          <p class="zh">三种不同的业务环境，也对应三种不同的增长挑战。选择公司，查看我如何根据业务调整策略、创意系统与执行方式。</p>
+        </div>
+
+        <div class="social-company-grid" role="tablist" aria-label="Social growth work by company">
+          <button class="social-company-card active" type="button" role="tab" aria-selected="true" aria-controls="social-company-mango" data-social-company="mango">
+            <span class="company-selected" aria-hidden="true">✓</span>
+            <span class="company-label en">DTC pet products · 2026</span>
+            <span class="company-label zh">DTC 宠物用品 · 2026</span>
+            <span class="company-name">Mango Pets US</span>
+            <span class="company-focus en">Hands-on product storytelling and trend-native short-form video.</span>
+            <span class="company-focus zh">产品叙事、亲手制作与原生趋势短视频。</span>
+          </button>
+          <button class="social-company-card" type="button" role="tab" aria-selected="false" aria-controls="social-company-weee" data-social-company="weee">
+            <span class="company-selected" aria-hidden="true">✓</span>
+            <span class="company-label en">B2C e-commerce · 2024–2026</span>
+            <span class="company-label zh">B2C 电商 · 2024–2026</span>
+            <span class="company-name">Weee!</span>
+            <span class="company-focus en">Bilingual social growth, creator operations, paid distribution and campaign launches.</span>
+            <span class="company-focus zh">双语社交增长、创作者运营、付费分发与整合营销。</span>
+          </button>
+          <button class="social-company-card" type="button" role="tab" aria-selected="false" aria-controls="social-company-shipsaving" data-social-company="shipsaving">
+            <span class="company-selected" aria-hidden="true">✓</span>
+            <span class="company-label en">Early-stage startup · 2022–2023</span>
+            <span class="company-label zh">早期创业公司 · 2022–2023</span>
+            <span class="company-name">ShipSaving</span>
+            <span class="company-focus en">0→1 influencer, social and content acquisition with a lean startup playbook.</span>
+            <span class="company-focus zh">在精益环境中从 0→1 搭建达人、社媒与内容获客体系。</span>
+          </button>
+        </div>
+
+        <section class="social-company-panel" data-social-company-panel="mango" id="social-company-mango" role="tabpanel">
+          <article class="featured-case" id="mango-pets-case">
       <div class="case-header">
         <div>
           <div class="case-eyebrow en">Featured social case study · 2026</div>
@@ -2088,7 +2278,90 @@
           </div>
         </article>
       </div>
-    </article>
+          </article>
+        </section>
+
+        <section class="social-company-panel" data-social-company-panel="weee" id="social-company-weee" role="tabpanel" hidden>
+          <article class="social-company-case weee-case">
+            <div class="case-eyebrow en">Full-funnel social growth · 2024–2026</div>
+            <div class="case-eyebrow zh">全链路社交增长 · 2024–2026</div>
+            <h3 class="case-title en">Weee! · Bilingual social growth as a full-funnel learning system</h3>
+            <h3 class="case-title zh">Weee! · 把双语社交内容做成全链路增长学习系统</h3>
+            <p class="case-summary en">At Weee!, social was more than publishing. I connected product launches, cultural moments, creator execution, organic response, paid distribution, and performance feedback—turning consumer insight into creative, and creative into a repeatable growth loop.</p>
+            <p class="case-summary zh">在 Weee!，社交媒体不只是发布内容。我把新品上线、文化节日、创作者执行、自然反馈、付费分发与效果复盘连接起来，将消费者洞察转化为创意，再把创意沉淀成可复制的增长循环。</p>
+            <div class="panel-metrics">
+              <span class="panel-metric">9M+ annual content views</span>
+              <span class="panel-metric">+55% YoY audience growth</span>
+              <span class="panel-metric">$400K paid media managed</span>
+              <span class="panel-metric">3–4 writers + agency</span>
+            </div>
+            <div class="company-story-grid">
+              <article class="company-story">
+                <span class="story-number en">01 · Campaign storytelling</span><span class="story-number zh">01 · Campaign 叙事</span>
+                <h4 class="en">Turn product and cultural moments into consumer stories</h4><h4 class="zh">把产品与文化节点变成消费者故事</h4>
+                <p class="en">I translated buyer input, product benefits, seasonal moments and member value into social-first messages, formats and launch plans.</p>
+                <p class="zh">我把采购洞察、产品卖点、节日节点与会员价值转化为社交媒体原生的信息、形式与上线计划。</p>
+              </article>
+              <article class="company-story">
+                <span class="story-number en">02 · Creator system</span><span class="story-number zh">02 · 创作者体系</span>
+                <h4 class="en">Build a repeatable engine, not one-off posts</h4><h4 class="zh">搭建可复制的内容引擎，而非单次发帖</h4>
+                <p class="en">I directed writers and creators, managed briefs and feedback, and combined hands-on production with a scalable operating rhythm.</p>
+                <p class="zh">我管理写手和创作者、制定 brief 与反馈机制，同时亲自制作内容并建立可规模化的运营节奏。</p>
+              </article>
+              <article class="company-story">
+                <span class="story-number en">03 · Organic-to-paid loop</span><span class="story-number zh">03 · 自然到付费闭环</span>
+                <h4 class="en">Use creative response to improve distribution</h4><h4 class="zh">用创意反馈持续改善分发</h4>
+                <p class="en">I partnered with performance marketing and an external agency to test hooks, messages and formats, then carried the learning into the next creative cycle.</p>
+                <p class="zh">我与效果营销团队及外部代理商共同测试开头、信息与形式，并把学习带入下一轮创意迭代。</p>
+              </article>
+            </div>
+            <div class="company-work-ready">
+              <div><strong class="en">Selected public-facing work will live here.</strong><strong class="zh">这里将展示精选公开作品。</strong><span class="en">The case-study structure is ready for campaign and creative samples that can be shared without exposing confidential strategy or internal data.</span><span class="zh">案例结构已搭好，后续可加入不涉及商业机密或内部数据的 campaign 与创意素材。</span></div>
+              <div class="ready-icon" aria-hidden="true">↗</div>
+            </div>
+          </article>
+        </section>
+
+        <section class="social-company-panel" data-social-company-panel="shipsaving" id="social-company-shipsaving" role="tabpanel" hidden>
+          <article class="social-company-case shipsaving-case">
+            <div class="case-eyebrow en">0→1 startup growth · 2022–2023</div>
+            <div class="case-eyebrow zh">0→1 创业公司增长 · 2022–2023</div>
+            <h3 class="case-title en">ShipSaving · Building acquisition without a mature playbook</h3>
+            <h3 class="case-title zh">ShipSaving · 在没有成熟打法的环境中搭建获客体系</h3>
+            <p class="case-summary en">With a small budget and limited resources, I built early acquisition channels from the ground up—connecting social content, influencer partnerships, guest blogging, SEO and paid search instead of waiting for a mature growth machine to exist.</p>
+            <p class="case-summary zh">在预算有限、资源紧张的情况下，我从零搭建早期获客渠道，把社交内容、达人合作、客座博客、SEO 与付费搜索连接起来，而不是等待一套成熟增长机器出现。</p>
+            <div class="panel-metrics">
+              <span class="panel-metric">+120% YoY Xiaohongshu growth</span>
+              <span class="panel-metric">0→1 influencer program</span>
+              <span class="panel-metric">Guest blogger program</span>
+              <span class="panel-metric">Lean startup execution</span>
+            </div>
+            <div class="company-story-grid">
+              <article class="company-story">
+                <span class="story-number en">01 · Build from zero</span><span class="story-number zh">01 · 从零搭建</span>
+                <h4 class="en">Create the system before optimizing it</h4><h4 class="zh">先建立系统，再持续优化</h4>
+                <p class="en">I created the outreach, briefing, content and measurement processes needed to turn scattered experiments into repeatable programs.</p>
+                <p class="zh">我建立触达、brief、内容与衡量流程，把零散实验变成可以重复运行的项目。</p>
+              </article>
+              <article class="company-story">
+                <span class="story-number en">02 · Connect channels</span><span class="story-number zh">02 · 连接渠道</span>
+                <h4 class="en">Let social, influencer and SEO reinforce each other</h4><h4 class="zh">让社媒、达人与 SEO 相互增强</h4>
+                <p class="en">Instead of treating every channel as a silo, I used creator and blog content to expand discovery, trust and search visibility together.</p>
+                <p class="zh">我没有把渠道割裂开，而是用达人与博客内容同时扩大品牌发现、信任与搜索可见度。</p>
+              </article>
+              <article class="company-story">
+                <span class="story-number en">03 · Learn lean</span><span class="story-number zh">03 · 精益学习</span>
+                <h4 class="en">Move quickly when resources are constrained</h4><h4 class="zh">在资源受限时快速行动</h4>
+                <p class="en">Hands-on execution helped me validate messages and channels quickly, preserve budget, and build a practical growth playbook for the next cycle.</p>
+                <p class="zh">亲手执行让我能快速验证信息与渠道、控制预算，并为下一轮增长沉淀实用打法。</p>
+              </article>
+            </div>
+            <div class="company-work-ready">
+              <div><strong class="en">Selected public-facing work will live here.</strong><strong class="zh">这里将展示精选公开作品。</strong><span class="en">The company story is ready for social, influencer and content samples as they are curated.</span><span class="zh">公司案例框架已完成，后续可以逐步加入社交媒体、达人与内容素材。</span></div>
+              <div class="ready-icon" aria-hidden="true">↗</div>
+            </div>
+          </article>
+        </section>
       </section>
 
       <section class="portfolio-panel" data-portfolio-panel="ai" hidden>
@@ -2260,6 +2533,38 @@
   }
   syncPortfolioRoute();
 
+  const socialCompanyCards = [...document.querySelectorAll('[data-social-company]')];
+  const socialCompanyPanels = [...document.querySelectorAll('[data-social-company-panel]')];
+
+  function showSocialCompany(key) {
+    socialCompanyCards.forEach(card => {
+      const isActive = card.dataset.socialCompany === key;
+      card.classList.toggle('active', isActive);
+      card.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      card.tabIndex = isActive ? 0 : -1;
+    });
+    socialCompanyPanels.forEach(panel => {
+      panel.hidden = panel.dataset.socialCompanyPanel !== key;
+    });
+    if (key === 'mango' && window.instgrm && window.instgrm.Embeds) {
+      requestAnimationFrame(() => window.instgrm.Embeds.process());
+    }
+  }
+
+  socialCompanyCards.forEach(card => {
+    card.addEventListener('click', () => showSocialCompany(card.dataset.socialCompany));
+    card.addEventListener('keydown', event => {
+      if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+      event.preventDefault();
+      const currentIndex = socialCompanyCards.indexOf(card);
+      const direction = event.key === 'ArrowRight' ? 1 : -1;
+      const nextCard = socialCompanyCards[(currentIndex + direction + socialCompanyCards.length) % socialCompanyCards.length];
+      showSocialCompany(nextCard.dataset.socialCompany);
+      nextCard.focus();
+    });
+  });
+  showSocialCompany('mango');
+
   /* ----------------------------------------------------------
      Smooth scroll for nav links
   ---------------------------------------------------------- */
@@ -2286,6 +2591,7 @@
 <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
