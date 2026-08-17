@@ -84,7 +84,7 @@
        Handled entirely via JS inline styles (highest specificity).
        The .zh rule here is just a no-JS fallback.
     ============================================================ */
-    .zh { display: none; }
+    .lang-hidden { display: none !important; }
 
     /* ============================================================
        NAVBAR
@@ -1244,24 +1244,18 @@
   function setLang(lang) {
     const enEls = document.querySelectorAll('.en');
     const zhEls = document.querySelectorAll('.zh');
+    const showZh = lang === 'zh';
 
-    if (lang === 'zh') {
-      enEls.forEach(el => { el.style.display = 'none'; });
-      zhEls.forEach(el => { el.style.display = ''; });
-      document.getElementById('btn-en').classList.remove('active');
-      document.getElementById('btn-zh').classList.add('active');
-      document.documentElement.lang = 'zh';
-    } else {
-      zhEls.forEach(el => { el.style.display = 'none'; });
-      enEls.forEach(el => { el.style.display = ''; });
-      document.getElementById('btn-zh').classList.remove('active');
-      document.getElementById('btn-en').classList.add('active');
-      document.documentElement.lang = 'en';
-    }
+    enEls.forEach(el => { el.classList.toggle('lang-hidden', showZh); });
+    zhEls.forEach(el => { el.classList.toggle('lang-hidden', !showZh); });
+
+    document.getElementById('btn-en').classList.toggle('active', !showZh);
+    document.getElementById('btn-zh').classList.toggle('active', showZh);
+    document.documentElement.lang = showZh ? 'zh' : 'en';
   }
 
-  /* Initialize: hide all ZH elements on page load */
-  document.querySelectorAll('.zh').forEach(el => { el.style.display = 'none'; });
+  /* Initialize the English version on page load */
+  document.querySelectorAll('.zh').forEach(el => { el.classList.add('lang-hidden'); });
 
   /* ----------------------------------------------------------
      Portfolio filter
