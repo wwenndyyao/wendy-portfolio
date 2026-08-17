@@ -894,6 +894,260 @@
       .instagram-embed-wrap { min-height: 500px; }
     }
 
+    .portfolio-intro {
+      max-width: 720px;
+      margin: -4px 0 28px;
+      color: #5B5B5B;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .portfolio-category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .portfolio-category-card {
+      position: relative;
+      min-height: 190px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.16s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .portfolio-category-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.09);
+      border-color: rgba(0,0,0,0.18);
+    }
+
+    .portfolio-category-card:last-child {
+      grid-column: 1 / -1;
+      min-height: 155px;
+    }
+
+    .category-weee { background: linear-gradient(135deg, #FFF8E2, #FFFDF7); }
+    .category-performance { background: linear-gradient(135deg, #FFF0EB, #FFF9F6); }
+    .category-social { background: linear-gradient(135deg, #F1FFF9, #FBFFFD); }
+    .category-ai { background: linear-gradient(135deg, #F3F0FF, #FBFAFF); }
+    .category-site { background: linear-gradient(135deg, #EEF5FF, #FBFDFF); }
+
+    .category-index {
+      display: inline-block;
+      margin-bottom: 26px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #777;
+    }
+
+    .category-icon {
+      position: absolute;
+      top: 20px;
+      right: 22px;
+      font-size: 30px;
+    }
+
+    .category-title {
+      max-width: 85%;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .category-copy {
+      max-width: 620px;
+      font-size: 12px;
+      line-height: 1.65;
+      color: #5F5F5F;
+    }
+
+    .category-open {
+      display: inline-block;
+      margin-top: 17px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #275D9B;
+    }
+
+    .portfolio-dialog {
+      width: min(1100px, calc(100vw - 32px));
+      max-height: 90vh;
+      padding: 0;
+      border: none;
+      border-radius: 24px;
+      background: #fff;
+      color: var(--dark);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.22);
+      overflow: hidden;
+    }
+
+    .portfolio-dialog::backdrop {
+      background: rgba(19, 22, 29, 0.64);
+      backdrop-filter: blur(5px);
+    }
+
+    .dialog-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 22px;
+      border-bottom: 1px solid #ECECEC;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+    }
+
+    .dialog-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #777;
+    }
+
+    .dialog-close {
+      width: 36px;
+      height: 36px;
+      border: 1px solid #DADADA;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--dark);
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .dialog-close:hover { background: #F4F4F4; }
+
+    .dialog-scroll {
+      max-height: calc(90vh - 69px);
+      overflow-y: auto;
+      padding: 28px;
+    }
+
+    .portfolio-panel[hidden] { display: none; }
+
+    .panel-hero {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: #FAFAFA;
+    }
+
+    .panel-kicker {
+      margin-bottom: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .panel-title {
+      max-width: 780px;
+      margin-bottom: 12px;
+      font-size: 27px;
+      font-weight: 600;
+      line-height: 1.28;
+    }
+
+    .panel-summary {
+      max-width: 780px;
+      color: #555;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    .panel-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 22px;
+    }
+
+    .panel-metric {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid #E1E1E1;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .panel-story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .panel-story {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+    }
+
+    .panel-story h4 {
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .panel-story p {
+      color: #5D5D5D;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .panel-note {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 13px;
+      background: #F5F7FA;
+      color: #555;
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+    .panel-link {
+      display: inline-flex;
+      margin-top: 20px;
+      padding: 9px 15px;
+      border-radius: 999px;
+      background: var(--dark);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .portfolio-dialog .featured-case {
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .portfolio-category-grid { grid-template-columns: 1fr; }
+      .portfolio-category-card:last-child { grid-column: auto; }
+      .portfolio-category-card { min-height: 170px; }
+      .dialog-scroll { padding: 16px; }
+      .panel-hero { padding: 22px; }
+      .panel-title { font-size: 23px; }
+      .panel-story-grid { grid-template-columns: 1fr; }
+    }
+
     .filter-row {
       display: flex;
       flex-wrap: wrap;
@@ -1547,7 +1801,121 @@
 
     <h2 class="section-title en">Selected work ✨</h2>
     <h2 class="section-title zh">精选作品 ✨</h2>
+    <p class="portfolio-intro en">Explore my work by capability. Each collection opens into the thinking, execution, and outcomes behind the work—without turning the homepage into a wall of projects.</p>
+    <p class="portfolio-intro zh">按能力方向查看我的作品。点击任一分类，即可进一步了解项目背后的思考、执行与成果，同时保持首页清晰易读。</p>
 
+    <div class="portfolio-category-grid">
+      <button class="portfolio-category-card category-weee" type="button" data-portfolio-key="weee">
+        <span class="category-index en">01 · Integrated growth</span>
+        <span class="category-index zh">01 · 整合增长</span>
+        <span class="category-icon" aria-hidden="true">🛒</span>
+        <div class="category-title">Weee! End-to-End Growth Campaign</div>
+        <p class="category-copy en">From product launches and cultural moments to messaging, creator execution, paid distribution, and learning loops.</p>
+        <p class="category-copy zh">从新品发布和文化节点，到信息策略、内容执行、付费分发与复盘迭代。</p>
+        <span class="category-open en">Open collection ↗</span>
+        <span class="category-open zh">打开案例 ↗</span>
+      </button>
+
+      <button class="portfolio-category-card category-performance" type="button" data-portfolio-key="performance">
+        <span class="category-index en">02 · Experimentation</span>
+        <span class="category-index zh">02 · 实验与迭代</span>
+        <span class="category-icon" aria-hidden="true">🧪</span>
+        <div class="category-title">Performance Creative &amp; Paid Testing</div>
+        <p class="category-copy en">How I turn organic signals and consumer insight into creative hypotheses, paid tests, and clearer decisions.</p>
+        <p class="category-copy zh">如何把自然内容信号和消费者洞察转化为创意假设、付费测试与更明确的决策。</p>
+        <span class="category-open en">Open collection ↗</span>
+        <span class="category-open zh">打开案例 ↗</span>
+      </button>
+
+      <button class="portfolio-category-card category-social" type="button" data-portfolio-key="social">
+        <span class="category-index en">03 · Social &amp; content</span>
+        <span class="category-index zh">03 · 社交与内容</span>
+        <span class="category-icon" aria-hidden="true">📱</span>
+        <div class="category-title en">Social Growth</div>
+        <div class="category-title zh">社交媒体增长</div>
+        <p class="category-copy en">Product storytelling, trend adaptation, creator instincts, and hands-on short-form production—including Mango Pets US.</p>
+        <p class="category-copy zh">产品叙事、趋势转化、创作者视角与短视频实拍制作，包括 Mango Pets US 案例。</p>
+        <span class="category-open en">View Mango Pets case ↗</span>
+        <span class="category-open zh">查看 Mango Pets 案例 ↗</span>
+      </button>
+
+      <button class="portfolio-category-card category-ai" type="button" data-portfolio-key="ai">
+        <span class="category-index en">04 · AI-enabled execution</span>
+        <span class="category-index zh">04 · AI 赋能执行</span>
+        <span class="category-icon" aria-hidden="true">🤖</span>
+        <div class="category-title">AI Marketing Workflow</div>
+        <p class="category-copy en">AI-assisted images, video, copy, and repeatable workflows designed to increase creative range and execution speed.</p>
+        <p class="category-copy zh">通过 AI 辅助图片、视频、文案与可复用流程，扩大创意范围并提升执行速度。</p>
+        <span class="category-open en">Open collection ↗</span>
+        <span class="category-open zh">打开案例 ↗</span>
+      </button>
+
+      <button class="portfolio-category-card category-site" type="button" data-portfolio-key="website">
+        <span class="category-index en">05 · Vibe-coded product</span>
+        <span class="category-index zh">05 · Vibe Coding 产品</span>
+        <span class="category-icon" aria-hidden="true">💻</span>
+        <div class="category-title en">This Website — Built with AI</div>
+        <div class="category-title zh">这个网站——用 AI 构建</div>
+        <p class="category-copy en">A bilingual personal brand and live digital product shaped through AI-assisted research, writing, design, coding, and deployment.</p>
+        <p class="category-copy zh">一个通过 AI 辅助研究、写作、设计、编码与部署完成的双语个人品牌与线上产品。</p>
+        <span class="category-open en">See how it was built ↗</span>
+        <span class="category-open zh">了解构建过程 ↗</span>
+      </button>
+    </div>
+  </div>
+
+  <dialog class="portfolio-dialog" id="portfolio-dialog" aria-label="Selected work details">
+    <div class="dialog-topbar">
+      <span class="dialog-label en">Selected work · Case study</span>
+      <span class="dialog-label zh">精选作品 · 案例详情</span>
+      <button class="dialog-close" type="button" aria-label="Close portfolio case study">×</button>
+    </div>
+    <div class="dialog-scroll">
+
+      <section class="portfolio-panel" data-portfolio-panel="weee" hidden>
+        <div class="panel-hero">
+          <div class="panel-kicker en">End-to-end campaign ownership</div>
+          <div class="panel-kicker zh">端到端 Campaign Ownership</div>
+          <h3 class="panel-title">Weee! End-to-End Growth Campaign</h3>
+          <p class="panel-summary en">At Weee!, I connected merchandising insight, consumer messaging, creative production, creator coordination, organic distribution, and paid testing. The work was not just “running social”—it was building a repeatable path from a product or cultural moment to measurable audience and user growth.</p>
+          <p class="panel-summary zh">在 Weee!，我把采购与产品洞察、消费者信息策略、创意制作、创作者协作、自然分发与付费测试连接起来。我的工作并不只是“运营社交账号”，而是建立从产品或文化节点到可衡量受众与用户增长的完整路径。</p>
+          <div class="panel-metrics">
+            <span class="panel-metric">🎬 300+ creative assets / year</span>
+            <span class="panel-metric">👀 9M+ annual content views</span>
+            <span class="panel-metric">📈 +55% YoY audience growth</span>
+            <span class="panel-metric">🤝 3–4 writers + agency</span>
+          </div>
+        </div>
+        <div class="panel-story-grid">
+          <article class="panel-story"><h4 class="en">Start with the moment</h4><h4 class="zh">从关键节点出发</h4><p class="en">Translate product launches, holidays, customer benefits, giveaways, and UGC opportunities into a campaign idea people can understand quickly.</p><p class="zh">把新品、节日、用户权益、Giveaway 与 UGC 机会转化为消费者能够快速理解的 Campaign 创意。</p></article>
+          <article class="panel-story"><h4 class="en">Build the creative system</h4><h4 class="zh">搭建创意系统</h4><p class="en">Shape the hook, messaging and format; brief writers and agency partners; then stay hands-on where creative judgment matters most.</p><p class="zh">确定 Hook、信息策略和内容形式，管理写手与 Agency，并在最需要创意判断的环节亲自执行。</p></article>
+          <article class="panel-story"><h4 class="en">Learn across channels</h4><h4 class="zh">跨渠道学习</h4><p class="en">Use organic response and paid experiments to identify which messages and formats deserve another iteration or wider distribution.</p><p class="zh">结合自然内容反馈与付费测试，判断哪些信息和形式值得继续迭代或扩大分发。</p></article>
+        </div>
+        <p class="panel-note en">Only public-facing work and aggregated results are included. Confidential strategy, dashboards, targeting details, and internal data are intentionally omitted.</p>
+        <p class="panel-note zh">本案例仅展示公开作品和汇总结果；内部策略、Dashboard、定向细节与未公开数据均已省略。</p>
+      </section>
+
+      <section class="portfolio-panel" data-portfolio-panel="performance" hidden>
+        <div class="panel-hero">
+          <div class="panel-kicker en">Creative × media × learning</div>
+          <div class="panel-kicker zh">创意 × 投放 × 学习</div>
+          <h3 class="panel-title">Performance Creative &amp; Paid Testing</h3>
+          <p class="panel-summary en">My performance approach starts before the media buy. I look for organic signals and consumer friction, turn them into creative hypotheses, test messages and formats through paid channels, then use the results to sharpen the next round of creative.</p>
+          <p class="panel-summary zh">我的 Performance 方法并不是从买量开始。我会先寻找自然内容信号和消费者痛点，把它们转化为创意假设，再通过付费渠道测试信息与形式，并用结果反向优化下一轮创意。</p>
+          <div class="panel-metrics">
+            <span class="panel-metric">💰 $400K paid media managed</span>
+            <span class="panel-metric">🧪 Message &amp; format testing</span>
+            <span class="panel-metric">📊 Organic-to-paid learning loop</span>
+          </div>
+        </div>
+        <div class="panel-story-grid">
+          <article class="panel-story"><h4>01 · Signal</h4><p class="en">Find recurring hooks, comments, pain points, and organic creative patterns that reveal what the audience already cares about.</p><p class="zh">从 Hook、评论、痛点和自然内容规律中，识别受众已经在意的内容。</p></article>
+          <article class="panel-story"><h4>02 · Test</h4><p class="en">Turn the signal into distinct creative variables—message, opening, visual structure, offer, or audience framing.</p><p class="zh">把信号拆解为不同创意变量：信息、开头、视觉结构、Offer 或受众表达。</p></article>
+          <article class="panel-story"><h4>03 · Scale</h4><p class="en">Use performance to decide what to iterate, retire, or scale—without separating media efficiency from creative quality.</p><p class="zh">根据表现判断哪些内容应继续迭代、停止或扩大，而不是把媒体效率和创意质量割裂开来。</p></article>
+        </div>
+      </section>
+
+      <section class="portfolio-panel" data-portfolio-panel="social" hidden>
     <article class="featured-case" id="mango-pets-case">
       <div class="case-header">
         <div>
@@ -1657,101 +2025,50 @@
         </article>
       </div>
     </article>
+      </section>
 
-    <h3 class="portfolio-next en">More selected work</h3>
-    <h3 class="portfolio-next zh">更多精选作品</h3>
-
-    <div class="filter-row" role="group" aria-label="Portfolio filter">
-      <button class="filter-btn active" data-filter="all">
-        <span class="en">All</span><span class="zh">全部</span>
-      </button>
-      <button class="filter-btn" data-filter="xhs">📱 XHS</button>
-      <button class="filter-btn" data-filter="reel">🎬 Reels</button>
-      <button class="filter-btn" data-filter="ai">🤖 AI Content</button>
-      <button class="filter-btn" data-filter="campaign">📣 Campaigns</button>
-    </div>
-
-    <div class="portfolio-grid" id="portfolio-grid">
-
-      <a href="#" class="port-card" data-category="xhs">
-        <div class="port-thumb" style="background:#FFEEEE;">📱</div>
-        <div class="port-info">
-          <span class="port-tag" style="background:#FFF3B0;color:#7A6200;">📱 XHS</span>
-          <div class="port-title">
-            <span class="en">Viral product launch</span>
-            <span class="zh">爆款产品发布帖</span>
+      <section class="portfolio-panel" data-portfolio-panel="ai" hidden>
+        <div class="panel-hero">
+          <div class="panel-kicker en">AI-enabled marketing execution</div>
+          <div class="panel-kicker zh">AI 赋能营销执行</div>
+          <h3 class="panel-title">AI Marketing Workflow</h3>
+          <p class="panel-summary en">I use AI as an execution multiplier—not a substitute for consumer insight or creative judgment. Images, video, copy, and lightweight internal tools help me explore more directions, reduce repetitive work, and spend more time deciding what is strategically worth making.</p>
+          <p class="panel-summary zh">我把 AI 当作执行放大器，而不是消费者洞察或创意判断的替代品。AI 图片、视频、文案与轻量内部工具让我能探索更多方向、减少重复工作，并把更多时间放在判断什么值得做上。</p>
+          <div class="panel-metrics">
+            <span class="panel-metric">🖼️ AI image production</span>
+            <span class="panel-metric">🎞️ AI video workflows</span>
+            <span class="panel-metric">⚙️ Repeatable content systems</span>
+            <span class="panel-metric">🧠 Human-led judgment</span>
           </div>
-          <div class="port-meta en">亚小超 · 10k+ likes</div>
-          <div class="port-meta zh">亚小超 · 10k+ 点赞</div>
         </div>
-      </a>
+        <div class="panel-story-grid">
+          <article class="panel-story"><h4 class="en">Insight &amp; direction</h4><h4 class="zh">洞察与方向</h4><p class="en">Define the audience tension, message, visual territory and success criteria before generating assets.</p><p class="zh">在生成素材之前先明确受众张力、信息、视觉方向与成功标准。</p></article>
+          <article class="panel-story"><h4 class="en">AI-assisted execution</h4><h4 class="zh">AI 辅助执行</h4><p class="en">Generate and adapt images, video, copy, and variations while keeping brand and product facts grounded.</p><p class="zh">在保证品牌与产品事实准确的前提下，生成并调整图片、视频、文案和创意变体。</p></article>
+          <article class="panel-story"><h4 class="en">Systemize the repeatable</h4><h4 class="zh">把重复工作系统化</h4><p class="en">Use lightweight workflows and vibe-coded tools to remove repetitive steps and make future execution faster.</p><p class="zh">通过轻量 Workflow 与 Vibe Coding 工具减少重复步骤，让后续执行更快。</p></article>
+        </div>
+      </section>
 
-      <a href="#" class="port-card" data-category="reel">
-        <div class="port-thumb" style="background:#EEF4FF;">🎬</div>
-        <div class="port-info">
-          <span class="port-tag" style="background:#EEF4FF;color:#1a4fa8;">🎬 Reel</span>
-          <div class="port-title">
-            <span class="en">New year campaign</span>
-            <span class="zh">新年活动 Reel</span>
+      <section class="portfolio-panel" data-portfolio-panel="website" hidden>
+        <div class="panel-hero">
+          <div class="panel-kicker en">Vibe-coded digital product</div>
+          <div class="panel-kicker zh">Vibe Coding 数字产品</div>
+          <h3 class="panel-title en">This Website — Built with AI</h3>
+          <h3 class="panel-title zh">这个网站——用 AI 构建</h3>
+          <p class="panel-summary en">This portfolio began as an unfinished page and became a bilingual, responsive personal-brand product through AI-assisted interviewing, positioning, writing, information architecture, visual design, coding, QA, and GitHub Pages deployment. I directed the narrative and judgment; AI accelerated the making.</p>
+          <p class="panel-summary zh">这个作品集从一个未完成的页面开始，通过 AI 辅助职业访谈、定位、写作、信息架构、视觉设计、编码、测试与 GitHub Pages 部署，成为一个双语响应式个人品牌产品。叙事和判断由我主导，AI 加速了制作过程。</p>
+          <div class="panel-metrics">
+            <span class="panel-metric">🌐 Bilingual EN / ZH</span>
+            <span class="panel-metric">📱 Responsive design</span>
+            <span class="panel-metric">🧩 Information architecture</span>
+            <span class="panel-metric">🚀 GitHub Pages deployment</span>
           </div>
-          <div class="port-meta">@weee_official</div>
+          <a class="panel-link" href="https://github.com/wwenndyyao/wendy-portfolio" target="_blank" rel="noopener">View GitHub repository ↗</a>
         </div>
-      </a>
-
-      <a href="#" class="port-card" data-category="ai">
-        <div class="port-thumb" style="background:#F0FFF8;">🤖</div>
-        <div class="port-info">
-          <span class="port-tag" style="background:#E1F5EE;color:#0F6E56;">🤖 AI Video</span>
-          <div class="port-title">
-            <span class="en">AI promo video</span>
-            <span class="zh">AI 生成宣传视频</span>
-          </div>
-          <div class="port-meta">Claude API + video gen</div>
-        </div>
-      </a>
-
-      <a href="#" class="port-card" data-category="campaign">
-        <div class="port-thumb" style="background:#FFFBF0;">📣</div>
-        <div class="port-info">
-          <span class="port-tag" style="background:#FAECE7;color:#712B13;">📣 Campaign</span>
-          <div class="port-title">
-            <span class="en">KOL seeding campaign</span>
-            <span class="zh">KOL 种草活动</span>
-          </div>
-          <div class="port-meta en">20+ creators · XHS &amp; IG</div>
-          <div class="port-meta zh">20+ 达人 · 小红书 &amp; IG</div>
-        </div>
-      </a>
-
-      <a href="#" class="port-card" data-category="xhs">
-        <div class="port-thumb" style="background:#FFEEEE;">📱</div>
-        <div class="port-info">
-          <span class="port-tag" style="background:#FFF3B0;color:#7A6200;">📱 XHS</span>
-          <div class="port-title">
-            <span class="en">小包子 seasonal content</span>
-            <span class="zh">小包子 节日内容</span>
-          </div>
-          <div class="port-meta en">小包子 · Top 5%</div>
-          <div class="port-meta zh">小包子 · 互动前 5%</div>
-        </div>
-      </a>
-
-      <a href="#" class="port-card" data-category="ai">
-        <div class="port-thumb" style="background:#F0FFF8;">⚙️</div>
-        <div class="port-info">
-          <span class="port-tag" style="background:#E1F5EE;color:#0F6E56;">🤖 AI Tool</span>
-          <div class="port-title">
-            <span class="en">Copywriting automation</span>
-            <span class="zh">文案自动化工具</span>
-          </div>
-          <div class="port-meta">Python · Flask · Claude API</div>
-        </div>
-      </a>
+      </section>
 
     </div>
-  </div>
+  </dialog>
 </section>
-
 
 <!-- ============================================================
      CONTACT FOOTER
@@ -1799,26 +2116,37 @@
   document.querySelectorAll('.zh').forEach(el => { el.classList.add('lang-hidden'); });
 
   /* ----------------------------------------------------------
-     Portfolio filter
+     Portfolio collection modal
   ---------------------------------------------------------- */
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const portCards  = document.querySelectorAll('#portfolio-grid .port-card');
+  const portfolioDialog = document.getElementById('portfolio-dialog');
+  const portfolioCards = document.querySelectorAll('[data-portfolio-key]');
+  const portfolioPanels = document.querySelectorAll('[data-portfolio-panel]');
+  const portfolioClose = portfolioDialog.querySelector('.dialog-close');
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.dataset.filter;
-      portCards.forEach(card => {
-        if (filter === 'all' || card.dataset.category === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
+  function openPortfolioPanel(key) {
+    portfolioPanels.forEach(panel => {
+      panel.hidden = panel.dataset.portfolioPanel !== key;
     });
+    portfolioDialog.showModal();
+
+    if (key === 'social' && window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+    }
+  }
+
+  portfolioCards.forEach(card => {
+    card.addEventListener('click', () => openPortfolioPanel(card.dataset.portfolioKey));
   });
+
+  portfolioClose.addEventListener('click', () => portfolioDialog.close());
+
+  portfolioDialog.addEventListener('click', event => {
+    if (event.target === portfolioDialog) portfolioDialog.close();
+  });
+
+  if (window.location.hash === '#mango-pets-case') {
+    openPortfolioPanel('social');
+  }
 
   /* ----------------------------------------------------------
      Smooth scroll for nav links
@@ -1837,6 +2165,7 @@
 <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
