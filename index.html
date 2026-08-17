@@ -958,13 +958,14 @@
     }
 
     .portfolio-category-card:last-child {
-      grid-column: 1 / -1;
-      min-height: 155px;
+      grid-column: auto;
+      min-height: 190px;
     }
 
     .category-weee { background: linear-gradient(135deg, #FFF8E2, #FFFDF7); }
     .category-performance { background: linear-gradient(135deg, #FFF0EB, #FFF9F6); }
     .category-social { background: linear-gradient(135deg, #F1FFF9, #FBFFFD); }
+    .category-ai-creative { background: linear-gradient(135deg, #FFF1F7, #F5F0FF 58%, #F3FBFF); }
     .category-ai { background: linear-gradient(135deg, #F3F0FF, #FBFAFF); }
     .category-site { background: linear-gradient(135deg, #EEF5FF, #FBFDFF); }
 
@@ -1187,6 +1188,194 @@
       .panel-hero { padding: 22px; }
       .panel-title { font-size: 23px; }
       .panel-story-grid { grid-template-columns: 1fr; }
+    }
+
+    /* AI Creative Work */
+    .ai-creative-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(30px, 5vw, 58px);
+      border: 1px solid #E8D8F2;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 88% 18%, rgba(255, 201, 227, .72), transparent 25%),
+        radial-gradient(circle at 78% 80%, rgba(192, 226, 255, .68), transparent 26%),
+        linear-gradient(135deg, #FFF8FC 0%, #F7F2FF 52%, #F2FBFF 100%);
+    }
+    .ai-creative-hero::after {
+      content: "✦";
+      position: absolute;
+      right: clamp(26px, 7vw, 84px);
+      top: 24px;
+      color: rgba(122, 76, 160, .18);
+      font-size: clamp(58px, 10vw, 118px);
+      line-height: 1;
+      transform: rotate(12deg);
+      pointer-events: none;
+    }
+    .ai-creative-hero .panel-title {
+      max-width: 720px;
+      font-size: clamp(30px, 4.6vw, 50px);
+      letter-spacing: -.04em;
+    }
+    .ai-creative-hero .panel-summary {
+      max-width: 760px;
+      font-size: 14px;
+    }
+    .ai-creative-stage-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .ai-creative-stage {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: #fff;
+    }
+    .ai-stage-visual {
+      position: relative;
+      min-height: 240px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      background: #F7F4F8;
+    }
+    .ai-stage-visual.images {
+      background:
+        radial-gradient(circle at 25% 28%, #FFD5E7 0 12%, transparent 13%),
+        radial-gradient(circle at 72% 32%, #C8E9FF 0 18%, transparent 19%),
+        radial-gradient(circle at 52% 78%, #E8D8FF 0 22%, transparent 23%),
+        linear-gradient(135deg, #FFF7FB, #F7F0FF 55%, #F1FAFF);
+    }
+    .ai-stage-visual.images::before,
+    .ai-stage-visual.images::after {
+      content: "";
+      position: absolute;
+      width: 34%;
+      height: 58%;
+      top: 20%;
+      border: 8px solid rgba(255,255,255,.86);
+      border-radius: 16px;
+      box-shadow: 0 16px 38px rgba(84, 55, 104, .13);
+    }
+    .ai-stage-visual.images::before {
+      left: 19%;
+      transform: rotate(-8deg);
+      background: linear-gradient(155deg, #FFB9D8, #FFE6C4);
+    }
+    .ai-stage-visual.images::after {
+      right: 19%;
+      transform: rotate(8deg);
+      background: linear-gradient(155deg, #BEE7FF, #DED2FF);
+    }
+    .ai-stage-visual.video {
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, rgba(27,28,43,.96), rgba(69,42,89,.94)),
+        #252536;
+    }
+    .ai-stage-frame {
+      position: relative;
+      width: 46%;
+      height: 78%;
+      border: 7px solid rgba(255,255,255,.86);
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 58% 34%, #FFD2E6 0 12%, transparent 13%),
+        linear-gradient(155deg, #6B4E87, #CF77A4 48%, #F3C38D);
+      box-shadow: 0 18px 44px rgba(0,0,0,.28);
+    }
+    .ai-stage-play {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      transform: translate(-50%,-50%);
+      border-radius: 50%;
+      background: rgba(255,255,255,.92);
+      color: #4E345C;
+      font-size: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.22);
+    }
+    .ai-stage-copy {
+      padding: 24px;
+    }
+    .ai-stage-label {
+      display: block;
+      margin-bottom: 9px;
+      color: #8C5A88;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .ai-stage-copy h4 {
+      margin: 0 0 9px;
+      font-size: 21px;
+      line-height: 1.25;
+    }
+    .ai-stage-copy p {
+      margin: 0;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .ai-stage-status {
+      display: inline-flex;
+      margin-top: 18px;
+      padding: 7px 11px;
+      border: 1px solid #E5D4E7;
+      border-radius: 999px;
+      background: #FFF8FC;
+      color: #7B4D73;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .ai-curation-note {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 20px;
+      align-items: center;
+      margin-top: 20px;
+      padding: 24px;
+      border: 1px dashed #D7C5DD;
+      border-radius: 20px;
+      background: #FCF9FD;
+    }
+    .ai-curation-note h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+    .ai-curation-note p {
+      margin: 0;
+      color: #666;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .ai-curation-fields {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .ai-curation-fields span {
+      padding: 7px 10px;
+      border: 1px solid #E5DBE8;
+      border-radius: 999px;
+      background: #fff;
+      color: #655A69;
+      font-size: 10px;
+      font-weight: 600;
+    }
+    @media (max-width: 760px) {
+      .ai-creative-stage-grid,
+      .ai-curation-note { grid-template-columns: 1fr; }
+      .ai-stage-visual { min-height: 210px; }
+      .ai-creative-hero::after { opacity: .55; }
     }
 
     /* Social Growth: company-level case-study switcher */
@@ -2035,9 +2224,20 @@
         <span class="category-open zh">浏览 3 个公司案例 ↗</span>
       </button>
 
+      <button class="portfolio-category-card category-ai-creative" type="button" data-portfolio-key="ai-creative">
+        <span class="category-index en">04 · AI creative direction</span>
+        <span class="category-index zh">04 · AI 创意指导</span>
+        <span class="category-icon" aria-hidden="true">✨</span>
+        <div class="category-title">AI Creative Work</div>
+        <p class="category-copy en">Viral-minded AI imagery and video shaped by consumer insight, creative direction, rapid iteration, and real audience response.</p>
+        <p class="category-copy zh">以消费者洞察、创意指导、快速迭代与真实受众反馈驱动的 AI 图片和视频作品。</p>
+        <span class="category-open en">Enter the creative studio ↗</span>
+        <span class="category-open zh">进入 AI 创意工作室 ↗</span>
+      </button>
+
       <button class="portfolio-category-card category-ai" type="button" data-portfolio-key="ai">
-        <span class="category-index en">04 · AI-enabled execution</span>
-        <span class="category-index zh">04 · AI 赋能执行</span>
+        <span class="category-index en">05 · AI-enabled execution</span>
+        <span class="category-index zh">05 · AI 赋能执行</span>
         <span class="category-icon" aria-hidden="true">🤖</span>
         <div class="category-title">AI Marketing Workflow</div>
         <p class="category-copy en">AI-assisted images, video, copy, and repeatable workflows designed to increase creative range and execution speed.</p>
@@ -2047,8 +2247,8 @@
       </button>
 
       <button class="portfolio-category-card category-site" type="button" data-portfolio-key="website">
-        <span class="category-index en">05 · Vibe-coded product</span>
-        <span class="category-index zh">05 · Vibe Coding 产品</span>
+        <span class="category-index en">06 · Vibe-coded product</span>
+        <span class="category-index zh">06 · Vibe Coding 产品</span>
         <span class="category-icon" aria-hidden="true">💻</span>
         <div class="category-title en">This Website — Built with AI</div>
         <div class="category-title zh">这个网站——用 AI 构建</div>
@@ -2364,6 +2564,89 @@
         </section>
       </section>
 
+      <section class="portfolio-panel" data-portfolio-panel="ai-creative" hidden>
+        <div class="ai-creative-hero">
+          <div class="panel-kicker en">AI creative direction &amp; production</div>
+          <div class="panel-kicker zh">AI 创意指导与制作</div>
+          <h3 class="panel-title en">AI Creative Work — From prompt to performance</h3>
+          <h3 class="panel-title zh">AI 创意作品——从 Prompt 到传播表现</h3>
+          <p class="panel-summary en">I use AI to move faster from consumer insight to visual story—combining a content creator's instincts with a growth marketer's eye for hooks, iteration, and audience response. This is not a gallery of random generations; each piece starts with a message worth making and is refined with human judgment.</p>
+          <p class="panel-summary zh">我用 AI 更快地把消费者洞察转化为视觉故事，把内容创作者的直觉与增长营销人对 Hook、迭代和受众反馈的敏感度结合起来。这里不是随机生成作品的集合；每一件作品都从值得表达的信息出发，并经过人的判断持续打磨。</p>
+          <div class="panel-metrics">
+            <span class="panel-metric">🖼️ AI imagery</span>
+            <span class="panel-metric">🎞️ AI video</span>
+            <span class="panel-metric">💡 Consumer-first concepts</span>
+            <span class="panel-metric">📈 Performance-minded iteration</span>
+          </div>
+        </div>
+
+        <div class="ai-creative-stage-grid">
+          <article class="ai-creative-stage">
+            <div class="ai-stage-visual images" aria-hidden="true"></div>
+            <div class="ai-stage-copy">
+              <span class="ai-stage-label en">Collection 01 · Still imagery</span>
+              <span class="ai-stage-label zh">作品集 01 · AI 图片</span>
+              <h4 class="en">Viral AI Images</h4>
+              <h4 class="zh">高传播 AI 图片</h4>
+              <p class="en">Scroll-stopping visuals built around cultural moments, consumer emotion, product storytelling, and platform-native aesthetics.</p>
+              <p class="zh">围绕文化节点、消费者情绪、产品叙事与平台原生审美，打造能够让人停下来的视觉内容。</p>
+              <span class="ai-stage-status en">Selected work being curated</span>
+              <span class="ai-stage-status zh">精选作品整理中</span>
+            </div>
+          </article>
+
+          <article class="ai-creative-stage">
+            <div class="ai-stage-visual video" aria-hidden="true">
+              <div class="ai-stage-frame"><span class="ai-stage-play">▶</span></div>
+            </div>
+            <div class="ai-stage-copy">
+              <span class="ai-stage-label en">Collection 02 · Motion</span>
+              <span class="ai-stage-label zh">作品集 02 · AI 视频</span>
+              <h4 class="en">AI Video Experiments</h4>
+              <h4 class="zh">AI 视频实验</h4>
+              <p class="en">Short-form concepts that use motion, pacing, sound, and unexpected visual transitions to turn an idea into a shareable story.</p>
+              <p class="zh">通过动态、节奏、声音与意外的视觉转场，把创意概念变成值得分享的短视频故事。</p>
+              <span class="ai-stage-status en">Selected work being curated</span>
+              <span class="ai-stage-status zh">精选作品整理中</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="panel-story-grid">
+          <article class="panel-story">
+            <h4 class="en">Insight before prompt</h4><h4 class="zh">Prompt 之前先有洞察</h4>
+            <p class="en">Start with the audience tension, cultural moment, product truth, or emotion the creative needs to unlock.</p>
+            <p class="zh">先明确创意需要触发的受众张力、文化节点、产品事实或情绪，再开始生成。</p>
+          </article>
+          <article class="panel-story">
+            <h4 class="en">Direct, select, refine</h4><h4 class="zh">指导、筛选与打磨</h4>
+            <p class="en">Treat prompting as creative direction: explore multiple visual territories, reject weak outputs, and refine the details that make the work feel intentional.</p>
+            <p class="zh">把 Prompt 当作创意指导：探索不同视觉方向、淘汰薄弱结果，并打磨让作品更有意图感的细节。</p>
+          </article>
+          <article class="panel-story">
+            <h4 class="en">Learn from real response</h4><h4 class="zh">从真实反馈中学习</h4>
+            <p class="en">Use views, likes, comments, saves, and qualitative audience response to understand which hooks and visual choices deserve another iteration.</p>
+            <p class="zh">通过播放、点赞、评论、收藏与受众反馈，判断哪些 Hook 和视觉选择值得继续迭代。</p>
+          </article>
+        </div>
+
+        <div class="ai-curation-note">
+          <div>
+            <h4 class="en">What every finished case will show</h4>
+            <h4 class="zh">每个完整案例都会展示什么</h4>
+            <p class="en">The final gallery will pair the creative with its strategic context and real performance—so the work demonstrates judgment, not just tool access.</p>
+            <p class="zh">最终作品集会把成品、策略背景与真实表现放在一起，让作品证明创意判断力，而不只是会使用工具。</p>
+          </div>
+          <div class="ai-curation-fields" aria-label="Case study fields">
+            <span>Brief &amp; audience</span>
+            <span>My role</span>
+            <span>Tools</span>
+            <span>Iteration</span>
+            <span>Published result</span>
+          </div>
+        </div>
+      </section>
+
       <section class="portfolio-panel" data-portfolio-panel="ai" hidden>
         <div class="panel-hero">
           <div class="panel-kicker en">AI-enabled marketing execution</div>
@@ -2591,6 +2874,7 @@
 <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
