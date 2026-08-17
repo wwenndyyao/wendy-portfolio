@@ -1190,6 +1190,130 @@
       .panel-story-grid { grid-template-columns: 1fr; }
     }
 
+    /* Weee!: audience expansion social case */
+    .market-shift-case {
+      margin-top: 22px;
+      padding: clamp(24px, 4vw, 38px);
+      border: 1px solid #BFE6F3;
+      border-radius: 22px;
+      background: linear-gradient(145deg, #F7FDFF 0%, #EEF9FD 55%, #F7FFF9 100%);
+    }
+    .market-shift-kicker {
+      margin-bottom: 10px;
+      color: #087AA0;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .market-shift-title {
+      max-width: 830px;
+      margin-bottom: 10px;
+      font-size: clamp(23px, 3vw, 32px);
+      line-height: 1.25;
+      letter-spacing: -.025em;
+    }
+    .market-shift-summary {
+      max-width: 880px;
+      color: #53656B;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+    .market-shift-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin: 24px 0;
+    }
+    .market-shift-step {
+      position: relative;
+      min-height: 156px;
+      padding: 18px;
+      border: 1px solid rgba(18, 137, 173, .16);
+      border-radius: 16px;
+      background: rgba(255,255,255,.84);
+    }
+    .market-shift-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      z-index: 2;
+      width: 20px;
+      height: 20px;
+      margin-top: -10px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #DFF3F9;
+      color: #087AA0;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .market-shift-step span {
+      display: block;
+      margin-bottom: 10px;
+      color: #1686A8;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .market-shift-step h5 {
+      margin: 0 0 7px;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+    .market-shift-step p {
+      margin: 0;
+      color: #68777C;
+      font-size: 11px;
+      line-height: 1.6;
+    }
+    .market-learning {
+      margin: 4px 0 18px;
+      padding: 16px 18px;
+      border-left: 3px solid #28A8C9;
+      border-radius: 0 12px 12px 0;
+      background: rgba(255,255,255,.72);
+      color: #43565D;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+    .market-learning strong { color: #126F8A; }
+    .weee-instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      align-items: start;
+    }
+    .weee-instagram-grid .instagram-project-head {
+      min-height: 158px;
+    }
+    .weee-instagram-grid .instagram-embed-wrap {
+      min-height: 520px;
+      padding: 8px;
+    }
+    .weee-instagram-grid .reel-engagement {
+      padding: 14px 12px;
+      gap: 9px;
+      font-size: 10px;
+    }
+    .weee-instagram-grid .reel-engagement a {
+      width: 100%;
+      margin-left: 0;
+    }
+    @media (max-width: 960px) {
+      .market-shift-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .market-shift-step:not(:last-child)::after { display: none; }
+      .weee-instagram-grid { grid-template-columns: 1fr; }
+      .weee-instagram-grid .instagram-project-head { min-height: 0; }
+      .weee-instagram-grid .instagram-embed-wrap { min-height: 500px; }
+    }
+    @media (max-width: 560px) {
+      .market-shift-flow { grid-template-columns: 1fr; }
+    }
+
     /* AI Creative Work */
     .ai-creative-hero {
       position: relative;
@@ -2515,10 +2639,100 @@
                 <p class="zh">我与效果营销团队及外部代理商共同测试开头、信息与形式，并把学习带入下一轮创意迭代。</p>
               </article>
             </div>
-            <div class="company-work-ready">
-              <div><strong class="en">Selected public-facing work will live here.</strong><strong class="zh">这里将展示精选公开作品。</strong><span class="en">The case-study structure is ready for campaign and creative samples that can be shared without exposing confidential strategy or internal data.</span><span class="zh">案例结构已搭好，后续可加入不涉及商业机密或内部数据的 campaign 与创意素材。</span></div>
-              <div class="ready-icon" aria-hidden="true">↗</div>
-            </div>
+            <section class="market-shift-case">
+              <div class="market-shift-kicker en">Audience expansion case · 2025–2026</div>
+              <div class="market-shift-kicker zh">受众扩张案例 · 2025–2026</div>
+              <h4 class="market-shift-title en">Finding the next growth audience: from a Chinese-market playbook to Asian-food-curious America</h4>
+              <h4 class="market-shift-title zh">寻找下一批增长用户：从中文市场打法转向热爱亚洲美食的美国受众</h4>
+              <p class="market-shift-summary en">By 2025, new-user acquisition in Weee!'s core Simplified Chinese audience had become increasingly difficult: much of the reachable market already knew or used the product. To keep growing, our team expanded toward English-speaking U.S. consumers who were curious about Asian food—but whose cultural references, recipe habits, and content expectations were different from the audience we knew best.</p>
+              <p class="market-shift-summary zh">到了 2025 年，Weee! 在核心简体中文用户中的新客增长越来越困难：大量可触达用户已经了解或使用产品。为了继续完成增长目标，我们把重点扩展到热爱亚洲美食的英语美国用户——但他们的文化参照、食谱习惯和内容期待，都与我们最熟悉的中文受众不同。</p>
+
+              <div class="market-shift-flow">
+                <article class="market-shift-step">
+                  <span class="en">01 · Saturation</span><span class="zh">01 · 市场趋于饱和</span>
+                  <h5 class="en">The old audience had a ceiling</h5><h5 class="zh">原有受众出现增长天花板</h5>
+                  <p class="en">The Simplified Chinese segment was well penetrated, making incremental acquisition harder.</p>
+                  <p class="zh">简体中文用户渗透率已经较高，新增获客变得越来越困难。</p>
+                </article>
+                <article class="market-shift-step">
+                  <span class="en">02 · Expansion</span><span class="zh">02 · 扩展市场</span>
+                  <h5 class="en">A new audience, not a translation task</h5><h5 class="zh">新的受众，不只是翻译内容</h5>
+                  <p class="en">We moved toward U.S. consumers interested in Asian food and had to relearn their entry points.</p>
+                  <p class="zh">我们转向对亚洲美食感兴趣的美国用户，并重新学习他们的内容切入点。</p>
+                </article>
+                <article class="market-shift-step">
+                  <span class="en">03 · Early miss</span><span class="zh">03 · 早期失效假设</span>
+                  <h5 class="en">China-trending did not equal U.S.-relevant</h5><h5 class="zh">中国热门不等于美国用户买单</h5>
+                  <p class="en">Recipes trending with Chinese audiences often underperformed when simply reposted to Instagram.</p>
+                  <p class="zh">在中国市场流行的食谱，直接搬到 Instagram 后往往表现不佳。</p>
+                </article>
+                <article class="market-shift-step">
+                  <span class="en">04 · Learning</span><span class="zh">04 · 找到有效方向</span>
+                  <h5 class="en">Familiar hooks opened the door</h5><h5 class="zh">熟悉的 Hook 成为入口</h5>
+                  <p class="en">Recognizable restaurant flavors, wellness rituals, and ultra-easy viral recipes created stronger organic response.</p>
+                  <p class="zh">中餐厅熟悉味道、养生仪式和超简单热门食谱，带来了更强的自然互动。</p>
+                </article>
+              </div>
+
+              <div class="market-learning en"><strong>The core learning:</strong> localization was not about explaining Chinese food more literally. It was about finding a familiar promise—restaurant flavor, wellness, convenience, or a native trend—then using that promise to make Asian ingredients feel immediately relevant.</div>
+              <div class="market-learning zh"><strong>核心学习：</strong>本地化并不是更直白地解释中国食物，而是先找到美国用户熟悉的价值承诺——中餐厅风味、养生、方便或平台原生趋势——再让亚洲食材变得与他们当下的生活直接相关。</div>
+
+              <div class="weee-instagram-grid">
+                <article class="instagram-project">
+                  <div class="instagram-project-head">
+                    <span class="reel-type en">Wellness ritual · Trend bridge</span>
+                    <span class="reel-type zh">养生仪式 · 趋势桥接</span>
+                    <div class="reel-title en">“Chinese baddie” hot-water ritual</div>
+                    <div class="reel-title zh">“Chinese baddie” 枸杞红枣热饮</div>
+                    <p class="reel-insight en">Connected goji berries, jujubes, and apple to a cozy wellness ritual—using a culturally specific idea in a format that felt legible and shareable to an English-speaking audience.</p>
+                    <p class="reel-insight zh">把枸杞、红枣和苹果包装成轻松温暖的养生仪式，用英语受众易理解、易分享的形式呈现文化概念。</p>
+                  </div>
+                  <div class="instagram-embed-wrap">
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUJzAqaiAmD/?utm_source=ig_embed" data-instgrm-version="14"></blockquote>
+                    <div class="reel-engagement" aria-label="227 likes and 2 comments on Instagram">
+                      <span>♥ 227 likes</span><span>💬 2 comments</span>
+                      <a href="https://www.instagram.com/p/DUJzAqaiAmD/" target="_blank" rel="noopener">View live post ↗</a>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="instagram-project">
+                  <div class="instagram-project-head">
+                    <span class="reel-type en">Familiar promise · Restaurant flavor</span>
+                    <span class="reel-type zh">熟悉承诺 · 中餐厅风味</span>
+                    <div class="reel-title en">Why Chinese-restaurant vegetables taste so good</div>
+                    <div class="reel-title zh">中餐厅蔬菜为什么那么好吃</div>
+                    <p class="reel-insight en">Led with a familiar consumer question, revealed oyster sauce as the answer, and turned a product ingredient into a fast, achievable restaurant-at-home story.</p>
+                    <p class="reel-insight zh">从美国消费者熟悉的问题切入，用蚝油揭晓答案，把单一食材变成十分钟即可实现的“在家复刻中餐厅”故事。</p>
+                  </div>
+                  <div class="instagram-embed-wrap">
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DRDjCzXCNZR/?utm_source=ig_embed" data-instgrm-version="14"></blockquote>
+                    <div class="reel-engagement" aria-label="317 likes and 1 comment on Instagram">
+                      <span>♥ 317 likes</span><span>💬 1 comment</span>
+                      <a href="https://www.instagram.com/p/DRDjCzXCNZR/" target="_blank" rel="noopener">View live post ↗</a>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="instagram-project">
+                  <div class="instagram-project-head">
+                    <span class="reel-type en">Platform-native · Low-friction recipe</span>
+                    <span class="reel-type zh">平台原生 · 超简单食谱</span>
+                    <div class="reel-title en">Viral blanket dumplings</div>
+                    <div class="reel-title zh">TikTok 热门 Blanket Dumplings</div>
+                    <p class="reel-insight en">Adapted a TikTok-native shortcut—no folding or pleating—into an approachable Chinese-food idea with a clear convenience hook and direct requests for the recipe.</p>
+                    <p class="reel-insight zh">把 TikTok 原生的“无需包饺子”快手做法转化为低门槛中餐创意，用方便的 Hook 带来明确的食谱需求互动。</p>
+                  </div>
+                  <div class="instagram-embed-wrap">
+                    <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DV5Jg-FCGaw/?utm_source=ig_embed" data-instgrm-version="14"></blockquote>
+                    <div class="reel-engagement" aria-label="46 likes and 4 comments on Instagram">
+                      <span>♥ 46 likes</span><span>💬 4 comments</span>
+                      <a href="https://www.instagram.com/p/DV5Jg-FCGaw/" target="_blank" rel="noopener">View live post ↗</a>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
           </article>
         </section>
 
@@ -2874,6 +3088,7 @@
 <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
