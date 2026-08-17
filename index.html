@@ -979,22 +979,20 @@
       color: #275D9B;
     }
 
-    .portfolio-dialog {
-      width: min(1100px, calc(100vw - 32px));
-      max-height: 90vh;
-      padding: 0;
-      border: none;
-      border-radius: 24px;
-      background: #fff;
+    .portfolio-detail-view {
+      position: fixed;
+      inset: 56px 0 0;
+      z-index: 90;
+      background: var(--bg-white);
       color: var(--dark);
-      box-shadow: 0 24px 80px rgba(0,0,0,0.22);
-      overflow: hidden;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      scroll-behavior: smooth;
     }
 
-    .portfolio-dialog::backdrop {
-      background: rgba(19, 22, 29, 0.64);
-      backdrop-filter: blur(5px);
-    }
+    .portfolio-detail-view[hidden] { display: none; }
+
+    body.portfolio-view-open { overflow: hidden; }
 
     .dialog-topbar {
       position: sticky;
@@ -1004,10 +1002,10 @@
       justify-content: space-between;
       align-items: center;
       gap: 20px;
-      padding: 16px 22px;
+      padding: 14px max(24px, calc((100vw - 1100px) / 2 + 24px));
       border-bottom: 1px solid #ECECEC;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
     }
 
     .dialog-label {
@@ -1019,23 +1017,32 @@
     }
 
     .dialog-close {
-      width: 36px;
-      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 8px 14px;
       border: 1px solid #DADADA;
-      border-radius: 50%;
+      border-radius: 999px;
       background: #fff;
       color: var(--dark);
-      font-size: 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
       line-height: 1;
       cursor: pointer;
     }
 
-    .dialog-close:hover { background: #F4F4F4; }
+    .dialog-close:hover {
+      border-color: #BDBDBD;
+      background: #F4F4F4;
+    }
 
     .dialog-scroll {
-      max-height: calc(90vh - 69px);
-      overflow-y: auto;
-      padding: 28px;
+      width: min(1100px, 100%);
+      min-height: calc(100vh - 112px);
+      margin: 0 auto;
+      padding: 42px 24px 80px;
     }
 
     .portfolio-panel[hidden] { display: none; }
@@ -1134,7 +1141,7 @@
       font-weight: 600;
     }
 
-    .portfolio-dialog .featured-case {
+    .portfolio-detail-view .featured-case {
       margin: 0;
     }
 
@@ -1142,7 +1149,11 @@
       .portfolio-category-grid { grid-template-columns: 1fr; }
       .portfolio-category-card:last-child { grid-column: auto; }
       .portfolio-category-card { min-height: 170px; }
-      .dialog-scroll { padding: 16px; }
+      .dialog-topbar {
+        padding: 12px 16px;
+      }
+      .dialog-label { display: none; }
+      .dialog-scroll { padding: 24px 16px 56px; }
       .panel-hero { padding: 22px; }
       .panel-title { font-size: 23px; }
       .panel-story-grid { grid-template-columns: 1fr; }
@@ -1864,11 +1875,14 @@
     </div>
   </div>
 
-  <dialog class="portfolio-dialog" id="portfolio-dialog" aria-label="Selected work details">
+  <section class="portfolio-detail-view" id="portfolio-detail-view" aria-label="Selected work details" hidden>
     <div class="dialog-topbar">
-      <span class="dialog-label en">Selected work · Case study</span>
-      <span class="dialog-label zh">精选作品 · 案例详情</span>
-      <button class="dialog-close" type="button" aria-label="Close portfolio case study">×</button>
+      <button class="dialog-close" type="button" aria-label="Back to selected work">
+        <span class="en">← Back to Selected Work</span>
+        <span class="zh">← 返回精选作品</span>
+      </button>
+      <span class="dialog-label en">Wendy Ao · Selected work</span>
+      <span class="dialog-label zh">Wendy Ao · 精选作品</span>
     </div>
     <div class="dialog-scroll">
 
@@ -2067,7 +2081,7 @@
       </section>
 
     </div>
-  </dialog>
+  </section>
 </section>
 
 <!-- ============================================================
@@ -2116,21 +2130,64 @@
   document.querySelectorAll('.zh').forEach(el => { el.classList.add('lang-hidden'); });
 
   /* ----------------------------------------------------------
-     Portfolio collection modal
+     Portfolio collection routes
+     Full-page case-study views live below the shared navbar.
   ---------------------------------------------------------- */
-  const portfolioDialog = document.getElementById('portfolio-dialog');
+  const portfolioDetailView = document.getElementById('portfolio-detail-view');
   const portfolioCards = document.querySelectorAll('[data-portfolio-key]');
   const portfolioPanels = document.querySelectorAll('[data-portfolio-panel]');
-  const portfolioClose = portfolioDialog.querySelector('.dialog-close');
+  const portfolioBack = portfolioDetailView.querySelector('.dialog-close');
+  const portfolioHashPrefix = '#work-';
+  let portfolioReturnY = window.scrollY;
 
-  function openPortfolioPanel(key) {
+  function portfolioKeyFromHash() {
+    return window.location.hash.startsWith(portfolioHashPrefix)
+      ? window.location.hash.slice(portfolioHashPrefix.length)
+      : null;
+  }
+
+  function openPortfolioPanel(key, options = {}) {
+    const updateHistory = options.updateHistory !== false;
+    const hasPanel = Array.from(portfolioPanels).some(panel => panel.dataset.portfolioPanel === key);
+    if (!hasPanel) return;
+
+    if (portfolioDetailView.hidden) portfolioReturnY = window.scrollY;
+
     portfolioPanels.forEach(panel => {
       panel.hidden = panel.dataset.portfolioPanel !== key;
     });
-    portfolioDialog.showModal();
+
+    portfolioDetailView.hidden = false;
+    portfolioDetailView.scrollTop = 0;
+    document.body.classList.add('portfolio-view-open');
+
+    if (updateHistory && window.location.hash !== portfolioHashPrefix + key) {
+      history.pushState({ portfolioKey: key }, '', portfolioHashPrefix + key);
+    }
 
     if (key === 'social' && window.instgrm && window.instgrm.Embeds) {
       window.instgrm.Embeds.process();
+    }
+  }
+
+  function closePortfolioPanel(options = {}) {
+    const updateHistory = options.updateHistory !== false;
+    portfolioDetailView.hidden = true;
+    document.body.classList.remove('portfolio-view-open');
+
+    if (updateHistory) {
+      history.replaceState(null, '', '#portfolio');
+    }
+
+    window.scrollTo({ top: portfolioReturnY, behavior: 'auto' });
+  }
+
+  function syncPortfolioRoute() {
+    const key = portfolioKeyFromHash();
+    if (key) {
+      openPortfolioPanel(key, { updateHistory: false });
+    } else if (!portfolioDetailView.hidden) {
+      closePortfolioPanel({ updateHistory: false });
     }
   }
 
@@ -2138,25 +2195,39 @@
     card.addEventListener('click', () => openPortfolioPanel(card.dataset.portfolioKey));
   });
 
-  portfolioClose.addEventListener('click', () => portfolioDialog.close());
-
-  portfolioDialog.addEventListener('click', event => {
-    if (event.target === portfolioDialog) portfolioDialog.close();
+  portfolioBack.addEventListener('click', () => {
+    if (history.state && history.state.portfolioKey) {
+      history.back();
+    } else {
+      closePortfolioPanel();
+    }
   });
 
+  window.addEventListener('popstate', syncPortfolioRoute);
+
   if (window.location.hash === '#mango-pets-case') {
-    openPortfolioPanel('social');
+    history.replaceState(null, '', portfolioHashPrefix + 'social');
   }
+  syncPortfolioRoute();
 
   /* ----------------------------------------------------------
      Smooth scroll for nav links
   ---------------------------------------------------------- */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(this.getAttribute('href'));
+      const href = this.getAttribute('href');
+      const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        if (!portfolioDetailView.hidden) {
+          closePortfolioPanel({ updateHistory: false });
+        }
+
+        history.pushState(null, '', href);
+        requestAnimationFrame(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
       }
     });
   });
@@ -2165,6 +2236,7 @@
 <script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
+
 
 
 
