@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wendy Ao — Growth Marketer</title>
+  <meta name="description" content="Wendy Ao is a Bay Area B2C growth marketer connecting consumer insight, performance creative, paid acquisition, social growth, and AI-enabled execution." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet" />
 
   <style>
     /* ============================================================
@@ -47,6 +48,26 @@
     }
 
     a { color: inherit; text-decoration: none; }
+
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 1000;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--dark);
+      color: #fff;
+      transform: translateY(-150%);
+      transition: transform 0.15s ease;
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    :focus-visible {
+      outline: 3px solid #1F6FEB;
+      outline-offset: 3px;
+    }
 
     /* ============================================================
        UTILITY
@@ -128,6 +149,19 @@
       transition: color 0.15s;
     }
     .nav-links a:hover { color: var(--dark); }
+
+    .nav-menu-btn {
+      display: none;
+      min-width: 42px;
+      min-height: 38px;
+      padding: 7px 11px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--dark);
+      font: 600 12px/1 'Inter', sans-serif;
+      cursor: pointer;
+    }
 
     .lang-toggle {
       display: flex;
@@ -1820,7 +1854,27 @@
        RESPONSIVE
     ============================================================ */
     @media (max-width: 768px) {
-      .nav-links { display: none !important; }
+      .nav-inner { position: relative; gap: 10px; }
+      .nav-menu-btn { display: inline-flex; align-items: center; justify-content: center; }
+      .nav-links {
+        position: absolute;
+        top: 56px;
+        left: 16px;
+        right: 16px;
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        padding: 8px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+      }
+      .nav-links.is-open { display: flex; }
+      .nav-links li { display: flex; }
+      .nav-links a { width: 100%; padding: 10px 12px; border-radius: 9px; }
+      .nav-links a:hover { background: #F6F6F6; }
+      .lang-btn { padding-inline: 10px; }
 
       .hero-inner {
         grid-template-columns: 1fr;
@@ -1854,18 +1908,33 @@
 
       .hero-h1 { font-size: 26px; }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html, .portfolio-detail-view { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 <body>
+<a class="skip-link en" href="#main-content">Skip to content</a>
+<a class="skip-link zh" href="#main-content">跳到主要内容</a>
 
 <!-- ============================================================
      NAVBAR
 ============================================================ -->
 <nav id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <span class="nav-logo">Wendy Ao ✦</span>
+    <a class="nav-logo" href="#hero" aria-label="Wendy Ao home">Wendy Ao ✦</a>
 
-    <ul class="nav-links">
+    <button class="nav-menu-btn" id="nav-menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">
+      <span class="en">Menu</span><span class="zh">菜单</span>
+    </button>
+
+    <ul class="nav-links" id="nav-links">
       <li><a href="#about"      class="en">About</a>      <a href="#about"      class="zh">关于</a></li>
       <li><a href="#experience" class="en">Experience</a> <a href="#experience" class="zh">经历</a></li>
       <li><a href="#education"  class="en">Education</a>  <a href="#education"  class="zh">教育</a></li>
@@ -1874,8 +1943,8 @@
     </ul>
 
     <div class="lang-toggle" role="group" aria-label="Language selector">
-      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn"        id="btn-zh" onclick="setLang('zh')">中文</button>
+      <button class="lang-btn active" id="btn-en" type="button" aria-pressed="true" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" id="btn-zh" type="button" aria-pressed="false" onclick="setLang('zh')">中文</button>
     </div>
   </div>
 </nav>
@@ -1884,6 +1953,7 @@
 <!-- ============================================================
      HERO
 ============================================================ -->
+<main id="main-content">
 <section id="hero">
   <div class="blob blob-yellow" aria-hidden="true"></div>
   <div class="blob blob-mint"   aria-hidden="true"></div>
@@ -1949,7 +2019,7 @@
       <div class="avatar-ring">
         <div class="avatar-inner">
           <!-- photo.jpg found in the same folder — swap src if you rename the file -->
-          <img src="photo.jpg" alt="Wendy Ao" onerror="this.style.display='none';this.parentElement.innerHTML='🌸';" />
+          <img src="photo.jpg" alt="Wendy Ao" width="1620" height="1280" fetchpriority="high" onerror="this.style.display='none';this.parentElement.innerHTML='🌸';" />
         </div>
       </div>
     </div>
@@ -2384,7 +2454,7 @@
     </div>
   </div>
 
-  <section class="portfolio-detail-view" id="portfolio-detail-view" aria-label="Selected work details" hidden>
+  <section class="portfolio-detail-view" id="portfolio-detail-view" aria-label="Selected work details" tabindex="-1" hidden>
     <div class="dialog-topbar">
       <button class="dialog-close" type="button" aria-label="Back to selected work">
         <span class="en">← Back to Selected Work</span>
@@ -2903,6 +2973,7 @@
     </div>
   </section>
 </section>
+</main>
 
 <!-- ============================================================
      CONTACT FOOTER
@@ -2943,11 +3014,34 @@
 
     document.getElementById('btn-en').classList.toggle('active', !showZh);
     document.getElementById('btn-zh').classList.toggle('active', showZh);
+    document.getElementById('btn-en').setAttribute('aria-pressed', showZh ? 'false' : 'true');
+    document.getElementById('btn-zh').setAttribute('aria-pressed', showZh ? 'true' : 'false');
+    document.getElementById('navbar').setAttribute('aria-label', showZh ? '主导航' : 'Main navigation');
+    document.querySelector('.lang-toggle').setAttribute('aria-label', showZh ? '语言选择' : 'Language selector');
+    document.getElementById('portfolio-detail-view').setAttribute('aria-label', showZh ? '精选作品详情' : 'Selected work details');
+    document.querySelector('.dialog-close').setAttribute('aria-label', showZh ? '返回精选作品' : 'Back to selected work');
     document.documentElement.lang = showZh ? 'zh' : 'en';
+    try { localStorage.setItem('wendy-portfolio-lang', lang); } catch (error) { /* storage may be unavailable */ }
   }
 
-  /* Initialize the English version on page load */
-  document.querySelectorAll('.zh').forEach(el => { el.classList.add('lang-hidden'); });
+  /* Restore the visitor's language choice when available. */
+  let initialLang = 'en';
+  try { initialLang = localStorage.getItem('wendy-portfolio-lang') || 'en'; } catch (error) { /* use English */ }
+  setLang(initialLang === 'zh' ? 'zh' : 'en');
+
+  const navMenuButton = document.getElementById('nav-menu-btn');
+  const navLinks = document.getElementById('nav-links');
+
+  function closeNavMenu() {
+    navLinks.classList.remove('is-open');
+    navMenuButton.setAttribute('aria-expanded', 'false');
+  }
+
+  navMenuButton.addEventListener('click', () => {
+    const willOpen = !navLinks.classList.contains('is-open');
+    navLinks.classList.toggle('is-open', willOpen);
+    navMenuButton.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  });
 
   /* ----------------------------------------------------------
      Portfolio collection routes
@@ -2959,6 +3053,29 @@
   const portfolioBack = portfolioDetailView.querySelector('.dialog-close');
   const portfolioHashPrefix = '#work-';
   let portfolioReturnY = window.scrollY;
+  let portfolioTrigger = null;
+  let instagramEmbedPromise = null;
+
+  function ensureInstagramEmbeds() {
+    if (window.instgrm && window.instgrm.Embeds) {
+      window.instgrm.Embeds.process();
+      return Promise.resolve();
+    }
+    if (instagramEmbedPromise) return instagramEmbedPromise;
+
+    instagramEmbedPromise = new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = 'https://www.instagram.com/embed.js';
+      script.async = true;
+      script.onload = () => {
+        if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process();
+        resolve();
+      };
+      script.onerror = reject;
+      document.body.appendChild(script);
+    });
+    return instagramEmbedPromise;
+  }
 
   function portfolioKeyFromHash() {
     return window.location.hash.startsWith(portfolioHashPrefix)
@@ -2980,14 +3097,15 @@
     portfolioDetailView.hidden = false;
     portfolioDetailView.scrollTop = 0;
     document.body.classList.add('portfolio-view-open');
+    closeNavMenu();
 
     if (updateHistory && window.location.hash !== portfolioHashPrefix + key) {
       history.pushState({ portfolioKey: key }, '', portfolioHashPrefix + key);
     }
 
-    if (key === 'social' && window.instgrm && window.instgrm.Embeds) {
-      window.instgrm.Embeds.process();
-    }
+    requestAnimationFrame(() => portfolioBack.focus());
+
+    if (key === 'social') ensureInstagramEmbeds().catch(() => {});
   }
 
   function closePortfolioPanel(options = {}) {
@@ -3000,6 +3118,9 @@
     }
 
     window.scrollTo({ top: portfolioReturnY, behavior: 'auto' });
+    if (portfolioTrigger && document.contains(portfolioTrigger)) {
+      requestAnimationFrame(() => portfolioTrigger.focus());
+    }
   }
 
   function syncPortfolioRoute() {
@@ -3012,7 +3133,10 @@
   }
 
   portfolioCards.forEach(card => {
-    card.addEventListener('click', () => openPortfolioPanel(card.dataset.portfolioKey));
+    card.addEventListener('click', () => {
+      portfolioTrigger = card;
+      openPortfolioPanel(card.dataset.portfolioKey);
+    });
   });
 
   portfolioBack.addEventListener('click', () => {
@@ -3024,6 +3148,14 @@
   });
 
   window.addEventListener('popstate', syncPortfolioRoute);
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !portfolioDetailView.hidden) closePortfolioPanel();
+    if (event.key === 'Escape' && navLinks.classList.contains('is-open')) {
+      closeNavMenu();
+      navMenuButton.focus();
+    }
+  });
 
   if (window.location.hash === '#mango-pets-case') {
     history.replaceState(null, '', portfolioHashPrefix + 'social');
@@ -3043,8 +3175,8 @@
     socialCompanyPanels.forEach(panel => {
       panel.hidden = panel.dataset.socialCompanyPanel !== key;
     });
-    if (key === 'mango' && window.instgrm && window.instgrm.Embeds) {
-      requestAnimationFrame(() => window.instgrm.Embeds.process());
+    if (key === 'mango' && !document.getElementById('portfolio-detail-view').hidden) {
+      requestAnimationFrame(() => ensureInstagramEmbeds().catch(() => {}));
     }
   }
 
@@ -3075,24 +3207,20 @@
         if (!portfolioDetailView.hidden) {
           closePortfolioPanel({ updateHistory: false });
         }
+        closeNavMenu();
 
         history.pushState(null, '', href);
         requestAnimationFrame(() => {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
         });
       }
     });
   });
 </script>
 
-<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
-
-
-
-
-
 
 
 
